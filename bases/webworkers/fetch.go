@@ -9,12 +9,19 @@ import (
 	"strings"
 )
 
+func setPrefix(url string) string {
+	if !(strings.HasPrefix(url, "https://") || strings.HasPrefix(url, "http://")) {
+		url = "https://" + url
+	}
+
+	return url
+}
+
 // Fetch ...
 func Fetch() {
 	for _, url := range os.Args[1:] {
-		if !(strings.HasPrefix(url, "https://") || strings.HasPrefix(url, "http://")) {
-			url = "https://" + url
-		}
+
+		url = setPrefix(url)
 
 		res, err := http.Get(url)
 		if err != nil {
@@ -34,5 +41,7 @@ func Fetch() {
 		if _, err := io.Copy(os.Stdout, res.Body); err != nil {
 			fmt.Fprintf(os.Stderr, "parsing body from req to %s: %v\n", url, err)
 		}
+
+		res.Body.Close()
 	}
 }
