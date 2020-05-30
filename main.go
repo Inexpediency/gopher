@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/echo"
+import "github.com/ythosa/gobih/bases/duplicates"
 
 func main() {
-	echo.Start()
+	duplicates.FindStringsFromFile()
 }
