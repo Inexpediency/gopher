@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/helloworld"
+import "github.com/ythosa/gobih/echo"
 
 func main() {
-	helloworld.HelloWorld()
+	echo.Start()
 }
