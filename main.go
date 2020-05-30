@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/bases/lissajous"
+import "github.com/ythosa/gobih/bases/webworkers"
 
 func main() {
-	lissajous.Draw()
+	webworkers.Fetch()
 }

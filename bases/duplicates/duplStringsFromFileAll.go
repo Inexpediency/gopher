@@ -10,7 +10,7 @@ import (
 // FindStringsFromFileAll ...
 func FindStringsFromFileAll() {
 	counts := make(map[string]int)
-	for _, fileName := os.Args[1:] {
+	for _, fileName := range os.Args[1:] {
 		data, err := ioutil.ReadFile(fileName)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "duplicates: %v\n", err)
