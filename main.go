@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/bases/duplicates"
+import "github.com/ythosa/gobih/bases/lissajous"
 
 func main() {
-	duplicates.FindStringsFromFile()
+	lissajous.Draw()
 }
