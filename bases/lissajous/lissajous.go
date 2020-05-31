@@ -7,29 +7,28 @@ import (
 	"io"
 	"math"
 	"math/rand"
-	"os"
 	"time"
 )
 
 var palette = []color.Color{color.Black, color.RGBA{0x41, 0x69, 0xE1, 0xFF}, color.RGBA{0xE1, 0x73, 0xB1, 0xff}, color.RGBA{0xCE, 0xFF, 0x00, 0xFF}}
 
 // Draw lissajous GIF image
-func Draw() {
-	lissajous(os.Stdout)
+func Draw(io io.Writer, cycles int, res float64, size, nframes, delay int) {
+	lissajous(io, cycles, res, size, nframes, delay)
 }
 
 func peekColor(palette []color.Color) int {
 	return rand.Int()%(len(palette)-1) + 1
 }
 
-func lissajous(out io.Writer) {
-	const (
-		cycles  = 5     // Number of vibrations
-		res     = 0.001 // Angular resolution
-		size    = 500   // The image canvas covers [size..+size]
-		nframes = 128   // The number of animation frames
-		delay   = 5     // Delay between frames
-	)
+func lissajous(out io.Writer, cycles int, res float64, size, nframes, delay int) {
+	// const (
+	// 	cycles  = 5     // Number of vibrations
+	// 	res     = 0.001 // Angular resolution
+	// 	size    = 500   // The image canvas covers [size..+size]
+	// 	nframes = 128   // The number of animation frames
+	// 	delay   = 5     // Delay between frames
+	// )
 
 	rand.Seed(time.Now().UTC().UnixNano())
 	freq := rand.Float64() * 3.0 // Relative frequency of vibrations
@@ -40,11 +39,11 @@ func lissajous(out io.Writer) {
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
 		img := image.NewPaletted(rect, palette)
 
-		for t := 0.0; t < cycles*2*math.Pi; t += res {
+		for t := 0.0; t < float64(cycles)*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
 
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8(peekColor(palette)))
+			img.SetColorIndex(size+int(x*float64(size)+0.5), size+int(y*float64(size)+0.5), uint8(peekColor(palette)))
 		}
 
 		phase += 0.05

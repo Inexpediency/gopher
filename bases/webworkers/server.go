@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
+const serverURL = "localhost:8080"
+
 // StartServer ...
 func StartServer() {
-	const url = "localhost:8080"
-
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(url, nil))
+	log.Fatal(http.ListenAndServe(serverURL, nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
