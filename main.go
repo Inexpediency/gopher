@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/bases/webworkers"
+import (
+	"github.com/ythosa/gobih/bases/echo"
+)
 
 func main() {
-	webworkers.StartServerRequestsCounter()
+	echo.StartEchoCLI()
 }
