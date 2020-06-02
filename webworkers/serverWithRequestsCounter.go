@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ythosa/gobih/bases/lissajous"
+	"github.com/ythosa/gobih/lissajous"
 )
 
 var (

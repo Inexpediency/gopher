@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/bases/echo"
+	"fmt"
+	"github.com/ythosa/gobih/popcount"
 )
 
 func main() {
-	echo.StartEchoCLI()
+	fmt.Println(popcount.PopCount(85))
 }
