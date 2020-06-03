@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"github.com/ythosa/gobih/popcount"
+	"github.com/ythosa/gobih/webworkers"
 )
 
 func main() {
-	fmt.Println(popcount.PopCount(85))
+	webworkers.StartServerRequestsCounter()
 }

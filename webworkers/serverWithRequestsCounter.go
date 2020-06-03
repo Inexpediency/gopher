@@ -2,7 +2,9 @@ package webworkers
 
 import (
 	"fmt"
+	"github.com/ythosa/gobih/surface"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -21,6 +23,7 @@ func StartServerRequestsCounter() {
 	http.HandleFunc("/", handlerCounter)
 	http.HandleFunc("/count", requestsCounter)
 	http.HandleFunc("/lissajous", lissajousHandler)
+	http.HandleFunc("/surface", surfaceHandler)
 
 	log.Fatal(http.ListenAndServe(serverURL, nil))
 }
@@ -87,4 +90,39 @@ func lissajousHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("res: %f, cycles: %d, size: %d, nframes: %d, delay: %d\n", res, cycles, size, nframes, delay)
 
 	lissajous.Draw(w, cycles, res, size, nframes, delay)
+}
+
+func surfaceHandler(w http.ResponseWriter, r *http.Request) {
+	// http://localhost:8080/surface?width=300&height=500&cells=100&xyrange=30
+
+	w.Header().Set("ContentType", "image/svg+xml")
+
+	var (
+		width, height, cells int
+		xyrange, xyscale, zscale, angle float64
+		)
+
+	url := strings.Split(r.URL.String()[9:], "&")
+	for _, v := range url {
+		prop := strings.Split(v, "=")[0]
+		value := strings.Split(v, "=")[1]
+
+		if prop == "width" {
+			width, _ = strconv.Atoi(value)
+		} else if prop == "height" {
+			height, _ = strconv.Atoi(value)
+		} else if prop == "cells" {
+			cells, _ = strconv.Atoi(value)
+		} else if prop == "xyrange" {
+			xyrange, _ = strconv.ParseFloat(value, 64)
+		}
+	}
+
+	xyscale = float64(width)/2/xyrange
+	zscale = float64(height) * 0.4
+	angle = math.Pi / 6
+
+	s := surface.Surf{Width: width, Height: height, Cells: cells, XYrange: xyrange, XYscale: xyscale, Zscale: zscale, Angle: angle}
+
+	surface.Draw(w, &s)
 }
