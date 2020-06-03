@@ -2,6 +2,7 @@ package webworkers
 
 import (
 	"fmt"
+	"github.com/ythosa/gobih/malbedro"
 	"github.com/ythosa/gobih/surface"
 	"log"
 	"math"
@@ -24,6 +25,7 @@ func StartServerRequestsCounter() {
 	http.HandleFunc("/count", requestsCounter)
 	http.HandleFunc("/lissajous", lissajousHandler)
 	http.HandleFunc("/surface", surfaceHandler)
+	http.HandleFunc("/malbedro", malbedroHandler)
 
 	log.Fatal(http.ListenAndServe(serverURL, nil))
 }
@@ -125,4 +127,8 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 	s := surface.Surf{Width: width, Height: height, Cells: cells, XYrange: xyrange, XYscale: xyscale, Zscale: zscale, Angle: angle}
 
 	surface.Draw(w, &s)
+}
+
+func malbedroHandler(w http.ResponseWriter, r *http.Request) {
+	malbedro.Draw(w)
 }
