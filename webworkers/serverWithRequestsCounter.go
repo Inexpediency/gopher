@@ -26,6 +26,7 @@ func StartServerRequestsCounter() {
 	http.HandleFunc("/lissajous", lissajousHandler)
 	http.HandleFunc("/surface", surfaceHandler)
 	http.HandleFunc("/malbedro", malbedroHandler)
+	http.HandleFunc("/nutonpic", nutonHandler)
 
 	log.Fatal(http.ListenAndServe(serverURL, nil))
 }
@@ -130,5 +131,9 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func malbedroHandler(w http.ResponseWriter, r *http.Request) {
-	malbedro.Draw(w)
+	malbedro.DrawMalbedro(w)
+}
+
+func nutonHandler(w http.ResponseWriter, r *http.Request) {
+	malbedro.DrawNuton(w)
 }
