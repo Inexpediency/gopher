@@ -19,8 +19,8 @@ var (
 	reqCount int
 )
 
-// StartServerRequestsCounter ...
-func StartServerRequestsCounter() {
+// StartServerAll ...
+func StartServerAll() {
 	http.HandleFunc("/", handlerCounter)
 	http.HandleFunc("/count", requestsCounter)
 	http.HandleFunc("/lissajous", lissajousHandler)
