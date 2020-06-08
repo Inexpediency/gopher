@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	types.TestAppendInt()
+	types.TestNonEmpty()
 }

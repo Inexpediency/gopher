@@ -1,7 +1,5 @@
 package types
 
-import "fmt"
-
 func Reverse(s []int) {
 	for i, j := 0, len(s) - 1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
@@ -19,12 +17,7 @@ func CycleShift(s []int, n int) {
 	Reverse(s)
 }
 
-func TestCycleShift() {
-	s := []int{0, 1, 2, 3, 4, 5}
-	CycleShift(s, 3)
-	fmt.Println(s) // Output: [3 4 5 0 1 2]
-}
-
+// AppendInt to slice
 func AppendInt(x []int, y ...int) []int {
 	var z []int
 	zlen := len(x) + len(y)
@@ -46,22 +39,14 @@ func AppendInt(x []int, y ...int) []int {
 	return z
 }
 
-func TestAppendInt() {
-	var x, y []int
-	for i := 0; i < 10; i++ {
-		y = AppendInt(x, i)
-		fmt.Printf("%d cap = %d\t%v\n", i, cap(y), y)
-		x = y
+// NonEmpty return array without empty strings
+func NonEmpty(strings []string) []string {
+	i := 0
+	for _, s := range strings {
+		if s != "" {
+			strings[i] = s
+			i++
+		}
 	}
-
-	fmt.Print("\n\n")
-
-	// Append one more elements with ... syntax
-	x, y = []int{}, []int{}
-	for i := 1; i <= 3; i++ {
-		x = append(x, i*2)
-		y = AppendInt(x, x...)
-		fmt.Printf("%d cap = %d\t%v\n", i, cap(y), y)
-		x = y
-	}
+	return strings[:i]
 }
