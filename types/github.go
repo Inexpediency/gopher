@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"text/template"
 	"time"
 )
 
@@ -35,8 +36,6 @@ type User struct {
 
 func SearchIssues(terms []string) (*IssueSearchResult, error) {
 	q := url.QueryEscape(strings.Join(terms, " "))
-	url := IssueURL + "?q=" + q
-	fmt.Println(url)
 	res, err := http.Get(IssueURL + "?q=" + q)
 	if err != nil {
 		return nil, err
@@ -62,6 +61,35 @@ func StartSearch() {
 		log.Fatal(err)
 	}
 
+	//SimplePrint(result)
+	TemplatePrint(result)
+}
+
+func daysAgo(date time.Time) int {
+	return int(time.Since(date).Hours() / 24)
+}
+
+func TemplatePrint(result *IssueSearchResult) {
+	const templ = `Total {{.TotalCount}} issues:
+	{{range .Items}}
+-------------------------------
+	Number: {{.Number}}
+	User: {{.User.Login}}
+	Title: {{.Title | printf "%.64s"}}
+	Age: {{.CreatedAt | daysAgo}} days
+	{{end}}`
+
+	var report = template.Must(template.New("issuelist").
+		Funcs(template.FuncMap{"daysAgo": daysAgo}).
+		Parse(templ))
+
+	if err := report.Execute(os.Stdout, result); err != nil {
+		log.Fatal(err)
+	}
+
+}
+
+func SimplePrint(result *IssueSearchResult) {
 	fmt.Printf("Total: %d issues", result.TotalCount)
 	for _, item := range result.Items {
 		fmt.Printf("#%-5d %9.9s %.55s\n", item.Number, item.User.Login, item.Title)
