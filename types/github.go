@@ -62,14 +62,15 @@ func StartSearch() {
 	}
 
 	//SimplePrint(result)
-	TemplatePrint(result)
+	//TemplateTextPrint(result)
+	TemplateHTMLPrint(result)
 }
 
 func daysAgo(date time.Time) int {
 	return int(time.Since(date).Hours() / 24)
 }
 
-func TemplatePrint(result *IssueSearchResult) {
+func TemplateTextPrint(result *IssueSearchResult) {
 	const templ = `Total {{.TotalCount}} issues:
 	{{range .Items}}
 -------------------------------
@@ -86,7 +87,31 @@ func TemplatePrint(result *IssueSearchResult) {
 	if err := report.Execute(os.Stdout, result); err != nil {
 		log.Fatal(err)
 	}
+}
 
+func TemplateHTMLPrint(result *IssueSearchResult) {
+	var issueList = template.Must(template.New("issuelist").Parse(
+`<h1>Total: {{.TotalCount}} issues</h1>
+<table>
+	<tr style=’text-align: left’>
+		<th>#</th>
+		<th>State</th>
+		<th>User</th>
+		<th>Title</th>
+	</tr> 
+	{{range .Items}}
+	<tr>
+		<td><a href= '{{.HTMLURL}}'>{{.Number}}</a></td>
+		<td>{{.State}}</td>
+		<td><a href='{{.User.HTMLURL}}'>{{.User.Login}}</a></td>
+		<td><a href='{{.HTMLURL}}'>{{.Title}}</a></td>
+	</tr> 
+	{{end}}
+</table>`))
+
+	if err := issueList.Execute(os.Stdout, result); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func SimplePrint(result *IssueSearchResult) {
