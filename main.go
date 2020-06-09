@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/types"
+import (
+	"github.com/ythosa/gobih/webworkers"
+)
 
 func main() {
-	types.StartSearch()
+	webworkers.StartServerAll()
 }

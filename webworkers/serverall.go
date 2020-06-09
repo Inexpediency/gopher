@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/ythosa/gobih/malbedro"
 	"github.com/ythosa/gobih/surface"
+	"github.com/ythosa/gobih/types"
 	"log"
 	"math"
 	"net/http"
@@ -27,6 +28,7 @@ func StartServerAll() {
 	http.HandleFunc("/surface", surfaceHandler)
 	http.HandleFunc("/malbedro", malbedroHandler)
 	http.HandleFunc("/nutonpic", nutonHandler)
+	http.HandleFunc("/githubIssues", githubIssuesHandler)
 
 	log.Fatal(http.ListenAndServe(serverURL, nil))
 }
@@ -136,4 +138,10 @@ func malbedroHandler(w http.ResponseWriter, r *http.Request) {
 
 func nutonHandler(w http.ResponseWriter, r *http.Request) {
 	malbedro.DrawNuton(w)
+}
+
+func githubIssuesHandler(w http.ResponseWriter, r *http.Request) {
+	// Request example: http://localhost:8080/githubIssues?repo:ythosa/where-is
+	args := strings.Split(r.URL.String()[14:], "&")
+	types.ServerSearch(w, args)
 }

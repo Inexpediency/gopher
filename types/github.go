@@ -3,6 +3,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -63,7 +64,15 @@ func StartSearch() {
 
 	//SimplePrint(result)
 	//TemplateTextPrint(result)
-	TemplateHTMLPrint(result)
+	TemplateHTMLPrint(os.Stdout, result)
+}
+
+func ServerSearch(out io.Writer, args []string) {
+	result, err := SearchIssues(args)
+	if err != nil {
+		log.Fatal(err)
+	}
+	TemplateHTMLPrint(out, result)
 }
 
 func daysAgo(date time.Time) int {
@@ -89,7 +98,7 @@ func TemplateTextPrint(result *IssueSearchResult) {
 	}
 }
 
-func TemplateHTMLPrint(result *IssueSearchResult) {
+func TemplateHTMLPrint(out io.Writer, result *IssueSearchResult) {
 	var issueList = template.Must(template.New("issuelist").Parse(
 `<h1>Total: {{.TotalCount}} issues</h1>
 <table>
@@ -109,7 +118,7 @@ func TemplateHTMLPrint(result *IssueSearchResult) {
 	{{end}}
 </table>`))
 
-	if err := issueList.Execute(os.Stdout, result); err != nil {
+	if err := issueList.Execute(out, result); err != nil {
 		log.Fatal(err)
 	}
 }
