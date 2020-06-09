@@ -34,6 +34,6 @@ func TestNonEmpty() {
 	// Before: []string{"Hello", "", "World", "", "!"}
 	fmt.Printf("Before: %#v\n", strings)
 
-	//After: []string{"Hello", "World", "!"}
+	// After: []string{"Hello", "World", "!"}
 	fmt.Printf("After: %#v", NonEmpty(strings))
 }
