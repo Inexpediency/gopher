@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/webworkers"
+	"github.com/ythosa/gobih/types"
 )
 
 func main() {
-	webworkers.StartServerAll()
+	types.TestForEachNode()
 }

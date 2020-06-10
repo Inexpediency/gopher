@@ -69,7 +69,7 @@ func requestsCounter(w http.ResponseWriter, r *http.Request) {
 }
 
 func lissajousHandler(w http.ResponseWriter, r *http.Request) {
-	// http://localhost:8080/lissajous?cycles=5&res=0.001&size=500&nframes=128&delay=5
+	// Request example: http://localhost:8080/lissajous?cycles=5&res=0.001&size=500&nframes=128&delay=5
 
 	var cycles, size, nframes, delay int
 	var res float64
@@ -98,7 +98,7 @@ func lissajousHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func surfaceHandler(w http.ResponseWriter, r *http.Request) {
-	// http://localhost:8080/surface?width=300&height=500&cells=100&xyrange=30
+	// Request example: http://localhost:8080/surface?width=300&height=500&cells=100&xyrange=30
 
 	w.Header().Set("ContentType", "image/svg+xml")
 
@@ -127,7 +127,15 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 	zscale = float64(height) * 0.4
 	angle = math.Pi / 6
 
-	s := surface.Surf{Width: width, Height: height, Cells: cells, XYrange: xyrange, XYscale: xyscale, Zscale: zscale, Angle: angle}
+	s := surface.Surf{
+		Width: width,
+		Height: height,
+		Cells: cells,
+		XYrange: xyrange,
+		XYscale: xyscale,
+		Zscale: zscale,
+		Angle: angle,
+	}
 
 	surface.Draw(w, &s)
 }
