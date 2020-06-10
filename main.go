@@ -1,9 +1,18 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/types"
+	"fmt"
+	"github.com/ythosa/gobih/links"
 )
 
 func main() {
-	types.TestTopologySort()
+	linksSlice, err := links.Extract("https://github.com/Ythosa/where-is")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for _, link := range linksSlice {
+		fmt.Println(link)
+	}
 }
