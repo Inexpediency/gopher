@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	types.TestSquares()
+	types.TestTopologySort()
 }
