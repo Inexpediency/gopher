@@ -77,6 +77,7 @@ func ForEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	}
 }
 
+
 var depth = 0
 func StartElement(n *html.Node) {
 	if n.Type == html.ElementNode {
