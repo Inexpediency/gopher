@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	types.TestForEachNode()
+	types.TestSquares()
 }

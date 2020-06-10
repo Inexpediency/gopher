@@ -51,3 +51,21 @@ func EndElement(n *html.Node) {
 		fmt.Printf("%*s</%s>\n", depth*4, "", n.Data)
 	}
 }
+
+func Squares() func() int {
+	var x = 0
+	return func() int {
+		x++
+		return x * x
+	}
+}
+
+func TestSquares() {
+	f := Squares()
+	fmt.Println(f()) // 1
+	fmt.Println(f()) // 4
+	fmt.Println(f()) // 9
+	fmt.Println(f()) // 16
+	fmt.Println(f()) // ...
+	fmt.Println(f())
+}
