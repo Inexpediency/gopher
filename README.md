@@ -33,14 +33,20 @@
     * [recursive finder links from start web page](https://github.com/Ythosa/gopher/tree/master/)
 * [./lissajous](https://github.com/Ythosa/gopher/tree/master/lissajous)
     * [generator lissajous gif images](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
-    * _includes examples of generated images_
+    * <details><summary> <i> includes examples of generated images </i> <br> </summary> 
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #1 </a> <br>
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #2 </a> <br>
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #3 </a> <br>
+      </details>
 * [./malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro)
     * [generator Malbedro and Newton Pools fractals](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.go)
     * _includes generated fractals_
+        * [Malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.jpg)
+        * [Newton Pools](https://github.com/Ythosa/gopher/tree/master/malbedro/nutonpulls.jpg)
 * [./popcount](https://github.com/Ythosa/gopher/tree/master/popcount)
-    * [number `1` counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
+    * [number _1_ counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
 * [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
-    * [`3D` surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
+    * [_3D_ surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
 * [./types](https://github.com/Ythosa/gopher/tree/master/types)
     * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
     * [generator html document with table ofissues and some info about them from entered 
@@ -48,6 +54,13 @@
     * [using iota samples](https://github.com/Ythosa/gopher/tree/master/types/netflags.go)
     * [some functions that show operations with slices _in place_](https://github.com/Ythosa/gopher/tree/master/types/slices.go)
         * [output examples of them](https://github.com/Ythosa/gopher/tree/master/types/testslices.go)
+* [./webworkers](https://github.com/Ythosa/gopher/tree/master/webworkers)
+    * [simple fetch url function](https://github.com/Ythosa/gopher/tree/master/webworkers/fetch.go)
+    * [fetch one more site function](https://github.com/Ythosa/gopher/tree/master/webworkers/fetchall.go)
+    * [simple echo server](https://github.com/Ythosa/gopher/tree/master/webworkers/server.go)
+    * [server that includes more interesting functions from this 
+    repository](https://github.com/Ythosa/gopher/tree/master/webworkers/serverall.go)
+
 <br>
 
 ## FAQ
