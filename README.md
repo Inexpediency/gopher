@@ -18,6 +18,24 @@
 
 <br>
 
+## Content
+* [./helloworld](https://github.com/Ythosa/gopher/tree/master/helloworld)
+    * [helloworld program](https://github.com/Ythosa/gopher/tree/master/helloworld/helloworld.go)
+* [./echo](https://github.com/Ythosa/gopher/tree/master/echo)
+    * [echo program](https://github.com/Ythosa/gopher/tree/master/echo/echo.go)
+    * [simple echo with CLI](https://github.com/Ythosa/gopher/tree/master/echo/echoCLI.go)
+* [./duplicates](https://github.com/Ythosa/gopher/tree/master/duplicates)
+    * [finder duplicated strings from stdin](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromFile.go)
+    * [finder duplicated strings from file](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromAll.go)
+    * [finder duplicated strings from one more file](https://github.com/Ythosa/gopher/tree/master/)
+* [./links](https://github.com/Ythosa/gopher/tree/master/links)
+    * [finder links on web page, generator html file with table of links on this page](https://github.com/Ythosa/gopher/tree/master/links/links.go)
+    * [recursive finder links from start web page](https://github.com/Ythosa/gopher/tree/master/)
+* [./lissajous](https://github.com/Ythosa/gopher/tree/master/lissajous)
+    * [generator lissajous gifs](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
+
+<br>
+
 ## FAQ
 *Q*: How can I help to develop this project?  
 *A*: You can put a :star: :3
