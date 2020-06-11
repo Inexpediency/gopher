@@ -8,19 +8,17 @@
 [![Badge](https://img.shields.io/badge/Made_with-Love-ff69b4.svg?style=flat-square)]("MadeWithLove")
     
 </div>
-
 <br>
 
 ## Description
 - Repository for Go training
 - Many simple and/or complex usage examples of Go
 - Short and interesting code snippets
-
 <br>
 
 ## Content
 * [./helloworld](https://github.com/Ythosa/gopher/tree/master/helloworld)
-    * [helloworld program](https://github.com/Ythosa/gopher/tree/master/helloworld/helloworld.go)
+    * [Hello World program](https://github.com/Ythosa/gopher/tree/master/helloworld/helloworld.go)
 * [./echo](https://github.com/Ythosa/gopher/tree/master/echo)
     * [echo program](https://github.com/Ythosa/gopher/tree/master/echo/echo.go)
     * [simple echo with CLI](https://github.com/Ythosa/gopher/tree/master/echo/echoCLI.go)
@@ -32,11 +30,11 @@
     * [finder links on web page](https://github.com/Ythosa/gopher/tree/master/links/links.go)
     * [recursive finder links from start web page](https://github.com/Ythosa/gopher/tree/master/)
 * [./lissajous](https://github.com/Ythosa/gopher/tree/master/lissajous)
-    * [generator lissajous gif images](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
+    * [generator lissajous GIF images](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
     * <details><summary> <i> includes examples of generated images </i> <br> </summary> 
         <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #1 </a> <br>
         <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #2 </a> <br>
-        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #3 </a> <br>
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #3 </a>
       </details>
 * [./malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro)
     * [generator Malbedro and Newton Pools fractals](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.go)
@@ -55,12 +53,11 @@
     * [some functions that show operations with slices _in place_](https://github.com/Ythosa/gopher/tree/master/types/slices.go)
         * [output examples of them](https://github.com/Ythosa/gopher/tree/master/types/testslices.go)
 * [./webworkers](https://github.com/Ythosa/gopher/tree/master/webworkers)
-    * [simple fetch url function](https://github.com/Ythosa/gopher/tree/master/webworkers/fetch.go)
+    * [simple fetch some URL function](https://github.com/Ythosa/gopher/tree/master/webworkers/fetch.go)
     * [fetch one more site function](https://github.com/Ythosa/gopher/tree/master/webworkers/fetchall.go)
     * [simple echo server](https://github.com/Ythosa/gopher/tree/master/webworkers/server.go)
     * [server that includes more interesting functions from this 
     repository](https://github.com/Ythosa/gopher/tree/master/webworkers/serverall.go)
-
 <br>
 
 ## FAQ
