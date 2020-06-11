@@ -29,11 +29,25 @@
     * [finder duplicated strings from file](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromAll.go)
     * [finder duplicated strings from one more file](https://github.com/Ythosa/gopher/tree/master/)
 * [./links](https://github.com/Ythosa/gopher/tree/master/links)
-    * [finder links on web page, generator html file with table of links on this page](https://github.com/Ythosa/gopher/tree/master/links/links.go)
+    * [finder links on web page](https://github.com/Ythosa/gopher/tree/master/links/links.go)
     * [recursive finder links from start web page](https://github.com/Ythosa/gopher/tree/master/)
 * [./lissajous](https://github.com/Ythosa/gopher/tree/master/lissajous)
-    * [generator lissajous gifs](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
-
+    * [generator lissajous gif images](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
+    * _includes examples of generated images_
+* [./malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro)
+    * [generator Malbedro and Newton Pools fractals](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.go)
+    * _includes generated fractals_
+* [./popcount](https://github.com/Ythosa/gopher/tree/master/popcount)
+    * [number `1` counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
+* [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
+    * [`3D` surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
+* [./types](https://github.com/Ythosa/gopher/tree/master/types)
+    * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
+    * [generator html document with table ofissues and some info about them from entered 
+    repository name on github](https://github.com/Ythosa/gopher/tree/master/types)
+    * [using iota samples](https://github.com/Ythosa/gopher/tree/master/types/netflags.go)
+    * [some functions that show operations with slices _in place_](https://github.com/Ythosa/gopher/tree/master/types/slices.go)
+        * [output examples of them](https://github.com/Ythosa/gopher/tree/master/types/testslices.go)
 <br>
 
 ## FAQ
