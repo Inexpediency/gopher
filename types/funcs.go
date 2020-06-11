@@ -2,7 +2,11 @@ package types
 
 import (
 	"fmt"
+	"github.com/ythosa/gobih/links"
+	"golang.org/x/net/html"
+	"net/http"
 	"sort"
+	"strings"
 )
 
 func Squares() func() int {
@@ -71,3 +75,46 @@ func TopologySort(m map[string][]string) []string {
 	return order
 }
 
+func Sum(values ...int) int {
+	result := 0
+	for v := range values {
+		result += v
+	}
+	return result
+}
+
+func TestSum() {
+	Sum(1, 2, 3)
+
+	values := make([]int, 0)
+	values = append(values, 1, 2, 3)
+	Sum(values...)
+}
+
+func PageHeaderHTMLChecker(url string) error {
+	res, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+
+	defer res.Body.Close()
+	ct := res.Header.Get("Content-Type")
+	if ct != "text/html" && !strings.HasPrefix(ct, "text/html") {
+		return fmt.Errorf("%s has type %s, but not text/html", url, ct)
+	}
+
+	doc, err := html.Parse(res.Body)
+	if err != nil {
+		return fmt.Errorf("analis %s how HTML: %v", url, err)
+	}
+
+	visitNode := func(n *html.Node) {
+		if n.Type == html.ElementNode && n.Data == "title" && n.FirstChild != nil {
+			fmt.Println(n.FirstChild.Data)
+		}
+	}
+
+	links.ForEachNode(doc, visitNode, nil)
+
+	return nil
+}

@@ -1,9 +1,12 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/links"
+	"fmt"
+	"github.com/ythosa/gobih/types"
 )
 
 func main() {
-	links.TestDeepCrawl()
+	if err := types.PageHeaderHTMLChecker("https://github.com"); err != nil {
+		fmt.Println(err)
+	}
 }
