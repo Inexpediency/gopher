@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"github.com/ythosa/gobih/links"
 	"golang.org/x/net/html"
+	"log"
 	"net/http"
+	"os"
 	"sort"
 	"strings"
+	"time"
 )
 
 func Squares() func() int {
@@ -116,5 +119,52 @@ func PageHeaderHTMLChecker(url string) error {
 
 	links.ForEachNode(doc, visitNode, nil)
 
+	return nil
+}
+
+func BigSlowOperation() {
+	defer Trace("Big Slow Operation")()
+	// too long work ...
+	time.Sleep(10 * time.Second) // Long work imitation
+}
+
+// Tracer function
+func Trace(msg string) func() {
+	start := time.Now()
+	log.Printf("enter in %s", msg)
+	return func() {
+		log.Printf("exit from %s (%s)", msg, time.Since(start))
+	}
+}
+
+func double(x int) (result int) {
+	defer func() {
+		fmt.Printf("double(%d) = %d\n", x, result)
+	}()
+	return x + x
+}
+
+func Triple(x int) (result int) {
+	defer func() { result += x }()
+	return double(x)
+}
+
+func FileWorker(filenames []string) error {
+	for _, filename := range filenames {
+		if err := doFile(filename); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func doFile(filename string) error {
+	f, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	// ... some work with file
 	return nil
 }

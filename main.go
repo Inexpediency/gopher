@@ -6,7 +6,5 @@ import (
 )
 
 func main() {
-	if err := types.PageHeaderHTMLChecker("https://github.com"); err != nil {
-		fmt.Println(err)
-	}
+	fmt.Println(types.Triple(5))
 }
