@@ -58,6 +58,7 @@
     * [simple echo server](https://github.com/Ythosa/gopher/tree/master/webworkers/server.go)
     * [server that includes more interesting functions from this 
     repository](https://github.com/Ythosa/gopher/tree/master/webworkers/serverall.go)
+* [./methods](https://github.com/Ythosa/gopher/tree/master/methods)
 <br>
 
 ## FAQ

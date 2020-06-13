@@ -54,3 +54,19 @@ type ColoredPoint struct {
 	Point
 	Color color.RGBA
 }
+
+func (p Point) Add(q Point) Point { return Point{p.X+q.X, p.Y+q.Y} }
+func (p Point) Sub(q Point) Point { return Point{p.X-q.X, p.Y-q.Y} }
+
+func (path Path) TranslateBy(offset Point, add bool) {
+	var op func(p, q Point) Point
+	if add {
+		op = Point.Add
+	} else {
+		op = Point.Sub
+	}
+	for i := range path {
+		// Вызов либо path[i].Add(offset), либо path[i].Sub(offset).
+		path[i] = op(path[i], offset)
+	}
+}
