@@ -1,7 +1,12 @@
 package main
 
-import "github.com/ythosa/gobih/interfaces"
+import (
+	"fmt"
+	"github.com/ythosa/gobih/interfaces"
+)
 
 func main() {
-	interfaces.CelsiusConverter()
+	if err := interfaces.SortTasks("artist", false); err != nil {
+		fmt.Println(err)
+	}
 }
