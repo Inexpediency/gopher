@@ -70,3 +70,5 @@ func (path Path) TranslateBy(offset Point, add bool) {
 		path[i] = op(path[i], offset)
 	}
 }
+
+

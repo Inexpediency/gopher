@@ -1,10 +1,7 @@
 package main
 
-import (
-	"fmt"
-	"github.com/ythosa/gobih/types"
-)
+import "github.com/ythosa/gobih/interfaces"
 
 func main() {
-	fmt.Println(types.Triple(5))
+	interfaces.CelsiusConverter()
 }
