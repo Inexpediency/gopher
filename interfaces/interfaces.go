@@ -118,3 +118,22 @@ func writeString(w io.Writer, s string) (n int, err error) {
 	}
 	return w.Write([]byte(s))    // Using temporary copy
 }
+
+
+// Type definition with switch example
+func sqlQuote(x interface{}) string {
+	switch x := x.(type) {
+	case nil:
+		return "NULL"
+	case int, uint:
+		return fmt.Sprintf("%d", x) // X has type interface{}.
+	case bool:
+		if x {
+			return "TRUE"
+		}
+		return "FALSE"
+	// string and other types ...
+	default:
+		panic(fmt.Sprintf("unexpected type %T: %v", x, x))
+	}
+}

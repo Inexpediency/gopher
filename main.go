@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/webworkers"
+import (
+	"github.com/ythosa/gobih/interfaces"
+)
 
 func main() {
-	webworkers.StartServerAll()
+	interfaces.DecodeXML()
 }
