@@ -63,10 +63,18 @@
     * [examples of using type methods in go](https://github.com/Ythosa/gopher/tree/master/methods/methods.go)
     * [bit vector realisation](https://github.com/Ythosa/gopher/tree/master/methods/bitvector.go)
 * [./interfaces](https://github.com/Ythosa/gopher/tree/master/interfaces)
-    * ...
-* [.counter](https://github.com/Ythosa/gopher/tree/master/counter)
-    * ...
-    
+    * [a lot of micro examples of using & features of interfaces](https://github.com/Ythosa/gopher/tree/master/interfaces/interfaces.go)
+    * [shop server realisation](https://github.com/Ythosa/gopher/tree/master/interfaces/shop.go)
+    * [celsius converter CLI application](https://github.com/Ythosa/gopher/tree/master/interfaces/temperature.go)
+    * [playlist sorting ang printing with _tabwriter_](https://github.com/Ythosa/gopher/tree/master/interfaces/tracks.go)
+    * [HTML tag sequence search engine](https://github.com/Ythosa/gopher/tree/master/interfaces/xmldecoder.go)
+* [./counter](https://github.com/Ythosa/gopher/tree/master/counter)
+    * _Expressions counter_
+    * [expressions checker, eval methods for them](https://github.com/Ythosa/gopher/tree/master/counter/counter.go)
+    * [parser & lexer](https://github.com/Ythosa/gopher/tree/master/counter/parse.go)
+    * [tests](https://github.com/Ythosa/gopher/tree/master/counter/counter_test.go)
+* [./concurrency](https://github.com/Ythosa/gopher/tree/master/concurrency)
+    *...
 <br>
 
 ## FAQ

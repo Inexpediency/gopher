@@ -59,6 +59,7 @@ func DecodeXML() {
 	}
 }
 
+// containsAll specifies whether x contains y elements in the same order
 func containsAll(x, y []string) bool {
 	for len(y) <= len(x) {
 		if len(y) == 0 {
@@ -71,5 +72,3 @@ func containsAll(x, y []string) bool {
 	}
 	return false
 }
-
-// ./webworkers/fetch.go http://www.w3.org/TR/2006/RECxmlll20060816 | ./xmlselect div div h2
