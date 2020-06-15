@@ -5,9 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"os"
 	"sort"
-	"text/tabwriter"
 	"time"
 )
 
