@@ -3,5 +3,5 @@ package main
 import "github.com/ythosa/gobih/concurrency"
 
 func main() {
-	concurrency.GoroutineExample()
+	concurrency.StartClockServer()
 }

@@ -74,7 +74,7 @@
     * [parser & lexer](https://github.com/Ythosa/gopher/tree/master/counter/parse.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/counter/counter_test.go)
 * [./concurrency](https://github.com/Ythosa/gopher/tree/master/concurrency)
-    *...
+    * ...
 
 <br>
 
