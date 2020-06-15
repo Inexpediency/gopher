@@ -1,9 +1,7 @@
 package main
 
-import (
-	"github.com/ythosa/gobih/interfaces"
-)
+import "github.com/ythosa/gobih/concurrency"
 
 func main() {
-	interfaces.DecodeXML()
+	concurrency.GoroutineExample()
 }

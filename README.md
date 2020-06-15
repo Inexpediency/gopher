@@ -18,7 +18,7 @@
 
 ## Content
 * [./helloworld](https://github.com/Ythosa/gopher/tree/master/helloworld)
-    * [Hello World program](https://github.com/Ythosa/gopher/tree/master/helloworld/helloworld.go)
+    * [hello World program](https://github.com/Ythosa/gopher/tree/master/helloworld/helloworld.go)
 * [./echo](https://github.com/Ythosa/gopher/tree/master/echo)
     * [echo program](https://github.com/Ythosa/gopher/tree/master/echo/echo.go)
     * [simple echo with CLI](https://github.com/Ythosa/gopher/tree/master/echo/echoCLI.go)
@@ -45,7 +45,7 @@
     * [number _1_ counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
 * [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
     * [_3D_ surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
-    * [Output example](https://github.com/Ythosa/gopher/tree/master/surface/surfaceExample.png)
+    * [output example](https://github.com/Ythosa/gopher/tree/master/surface/surfaceExample.png)
 * [./types](https://github.com/Ythosa/gopher/tree/master/types)
     * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
     * [generator html document with table ofissues and some info about them from entered 
@@ -69,12 +69,13 @@
     * [playlist sorting ang printing with _tabwriter_](https://github.com/Ythosa/gopher/tree/master/interfaces/tracks.go)
     * [HTML tag sequence search engine](https://github.com/Ythosa/gopher/tree/master/interfaces/xmldecoder.go)
 * [./counter](https://github.com/Ythosa/gopher/tree/master/counter)
-    * _Expressions counter_
+    * _expressions counter_
     * [expressions checker, eval methods for them](https://github.com/Ythosa/gopher/tree/master/counter/counter.go)
     * [parser & lexer](https://github.com/Ythosa/gopher/tree/master/counter/parse.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/counter/counter_test.go)
 * [./concurrency](https://github.com/Ythosa/gopher/tree/master/concurrency)
     *...
+
 <br>
 
 ## FAQ
