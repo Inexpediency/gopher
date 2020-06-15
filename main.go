@@ -1,7 +1,11 @@
 package main
 
-import "github.com/ythosa/gobih/concurrency"
+import (
+	"github.com/ythosa/gobih/concurrency"
+	"github.com/ythosa/gobih/webworkers"
+)
 
 func main() {
-	concurrency.StartClockServer()
+	go concurrency.StartServer(concurrency.HandleConnEchoServer)
+	webworkers.NetCat4EchoServer()
 }
