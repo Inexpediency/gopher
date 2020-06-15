@@ -45,6 +45,7 @@
     * [number _1_ counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
 * [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
     * [_3D_ surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
+    * [Output example](https://github.com/Ythosa/gopher/tree/master/surface/surfaceExample.png)
 * [./types](https://github.com/Ythosa/gopher/tree/master/types)
     * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
     * [generator html document with table ofissues and some info about them from entered 
@@ -59,6 +60,10 @@
     * [server that includes more interesting functions from this 
     repository](https://github.com/Ythosa/gopher/tree/master/webworkers/serverall.go)
 * [./methods](https://github.com/Ythosa/gopher/tree/master/methods)
+    * [examples of using type methods in go](https://github.com/Ythosa/gopher/tree/master/methods/methods.go)
+    * [bit vector realisation](https://github.com/Ythosa/gopher/tree/master/methods/bitvector.go)
+* [./interfaces](https://github.com/Ythosa/gopher/tree/master/interfaces)
+    * ...
 <br>
 
 ## FAQ

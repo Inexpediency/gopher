@@ -22,11 +22,11 @@ func Lookup(key string) string {
 
 
 type Point struct{ X, Y float64 }
-// Традиционная функция
+// Traditional function
 func Distance(p, q Point) float64 {
 	return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
-// To же, но как метод типа Point
+// The same, but as Point method
 func (p *Point) Distance(q Point) float64 {
 	return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
@@ -38,7 +38,7 @@ func (p *Point) ScaleBy(factor float64) {
 
 
 type Path []Point
-// Distance возвращает длину пути,
+// Distance returns path length
 func (path Path) Distance() float64 {
 	sum := 0.0
 	for i := range path {
@@ -66,9 +66,7 @@ func (path Path) TranslateBy(offset Point, add bool) {
 		op = Point.Sub
 	}
 	for i := range path {
-		// Вызов либо path[i].Add(offset), либо path[i].Sub(offset).
+		// Call or path[i].Add(offset), or path[i].Sub(offset).
 		path[i] = op(path[i], offset)
 	}
 }
-
-
