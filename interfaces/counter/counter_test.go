@@ -23,7 +23,7 @@ func TestEval(t *testing.T) {
 
 	var prevExpr string
 	for _, test := range tests {
-		// Выводит expr, только когда оно изменяется,
+		// Return expr, only where it is changed
 		if test.expr != prevExpr {
 			fmt.Printf("\n%s\n", test.expr)
 			prevExpr = test.expr
@@ -31,13 +31,13 @@ func TestEval(t *testing.T) {
 
 		expr, err := counter.Parse(test.expr)
 		if err != nil {
-			t.Error(err) // Ошибка анализа
+			t.Error(err) // Analyze error
 			continue
 		}
 			got := fmt.Sprintf("%.6g", expr.Eval(test.env))
 			fmt.Printf("\t%v => %s\n", test.env, got)
 			if got != test.want{
-				t.Errorf("%s.Eval() в %v = %q, требуется %q\n",
+				t.Errorf("%s.Eval() в %v = %q, must be %q\n",
 					test.expr, test.env, got, test.want)
 		}
 	}
