@@ -24,6 +24,7 @@ func (d dollars) String() string {
 type database map[string]dollars
 
 
+/* Shop 1.0 */
 func OpenShop() {
 	db := database{"shoes": 50, "socks": 30}
 	log.Fatal(http.ListenAndServe("localhost:8081", db))
@@ -110,4 +111,14 @@ func (db database) setPrice(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fmt.Fprintf(w, "Added new item: %s with cost = %s", item, db[item])
 	}
+}
+
+
+/* Shop 3.0 */
+func OpenTheBestShop() {
+	db := database{"shoes": 50, "socks": 30}
+	http.HandleFunc("/list", db.list)
+	http.HandleFunc("/price", db.price)
+	http.HandleFunc("setprice", db.setPrice)
+	log.Fatal(http.ListenAndServe("localhost:8081", nil)) // Using DefaultServeMux
 }
