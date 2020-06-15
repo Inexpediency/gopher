@@ -3,12 +3,15 @@ package counter
 import (
 	"fmt"
 	"math"
+	"strings"
 )
 
 // Expr represents an arithmetic expression
 type Expr interface {
 	// Eval returns the value of this Expr in the `env` environment
 	Eval(env Env) float64
+	// Check reports errors in this Expr and adds its own Vars
+	Check(vars map[Var]bool) error
 }
 
 // Var defines a variable, such as x
@@ -82,4 +85,30 @@ func (c call) Eval(env Env) float64 {
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
 
+func (v Var) Check(vars map[Var]bool) error {
+	vars[v] = true
+	return nil
+}
 
+func (literal) Check(vars map[Var]bool) error {
+	return nil
+}
+
+func (u unary) Check(vars map[Var]bool) error {
+	if !strings.ContainsRune("+-", u.op) {
+		return fmt.Errorf("invalid unary operator %q", u.op)
+	}
+	return u.x.Check(vars)
+}
+
+func (b binary) Check(vars map[Var]bool) error {
+	if strings.ContainsRune("+-*/", b.op) {
+		return fmt.Errorf("invalid binary operator %q", b.op)
+	}
+
+	if err := b.x.Check(vars); err != nil {
+		return err
+	}
+
+	return b.y.Check(vars)
+}

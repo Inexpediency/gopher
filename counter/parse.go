@@ -7,7 +7,7 @@ import (
 	"text/scanner"
 )
 
-// ---- lexer ----
+// ---- Lexer ----
 type lexer struct {
 	scan  scanner.Scanner
 	token rune // current lookahead token
@@ -41,7 +41,8 @@ func precedence(op rune) int {
 	return 0
 }
 
-// ---- parser ----
+
+// ---- Parser ----
 
 // Parse parses the input string as an arithmetic expression.
 //
@@ -78,7 +79,7 @@ func parseExpr(lex *lexer) Expr { return parseBinary(lex, 1) }
 
 // binary = unary ('+' binary)*
 // parseBinary stops when it encounters an
-// operator of lower precedence than prec1.
+// operator of lower precedence than prec1
 func parseBinary(lex *lexer, prec1 int) Expr {
 	lhs := parseUnary(lex)
 	for prec := precedence(lex.token); prec >= prec1; prec-- {

@@ -2,7 +2,7 @@ package counter_test
 
 import (
 	"fmt"
-	"github.com/ythosa/gobih/interfaces/counter"
+	"github.com/ythosa/gobih/counter"
 	"math"
 	"testing"
 )
