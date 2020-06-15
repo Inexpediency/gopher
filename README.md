@@ -64,6 +64,9 @@
     * [bit vector realisation](https://github.com/Ythosa/gopher/tree/master/methods/bitvector.go)
 * [./interfaces](https://github.com/Ythosa/gopher/tree/master/interfaces)
     * ...
+* [.counter](https://github.com/Ythosa/gopher/tree/master/counter)
+    * ...
+    
 <br>
 
 ## FAQ
