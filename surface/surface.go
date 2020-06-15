@@ -1,64 +1,55 @@
 package surface
 
 import (
+	"fmt"
 	"io"
 	"math"
-
-	"github.com/ajstarks/svgo"
 )
 
-// Surf struct
+var sin30, cos30 = math.Sin(math.Pi / 6), math.Cos(math.Pi / 6) // sin(30°), cos(30°)
+
 type Surf struct {
-	Width   int
-	Height  int
-	Cells   int
-	XYrange float64
-	XYscale float64
-	Zscale  float64
-	Angle   float64
+	Width, Height int // canvas size in pixels
+	Cells int         // number of grid cells
+	XYRange float64   // axis ranges (-xyrange..+xyrange)
 }
 
-// Draw surface
-func Draw(out io.Writer, d *Surf) {
+func (s *Surf) Draw(out io.Writer) {
+	fmt.Fprintf(out, "<svg xmlns='http://www.w3.org/2000/svg' "+
+		"style='stroke: grey; fill: white; stroke-width: 0.7' "+
+		"width='%d' height='%d'>", s.Width, s.Height)
 
-	s := svg.New(out)
-	s.Start(d.Width, d.Height)
-	s.Style("text/css", "stroke: red; fill: white; stroke-Width: 0.7;")
+	xyscale := float64(s.Width) / 2 / s.XYRange // pixels per x or y unit
+	zscale := float64(s.Height) * 0.4           // pixels per z unit
 
-	for i := 0; i < d.Cells; i++ {
-		for j := 0; j < d.Cells; j++ {
-			ax, ay := corner(i+1, j, d)
-			bx, by := corner(i, j, d)
-			cx, cy := corner(i, j+1, d)
-			dx, dy := corner(i+1, j+1, d)
-
-			x := make([]int, 0)
-			y := make([]int, 0)
-			x = append(x, int(ax), int(bx), int(cx), int(dx))
-			y = append(y, int(ay), int(by), int(cy), int(dy))
-
-			s.Polygon(x, y, "stroke: grey; fill: white; stroke-Width: 0.7;")
+	for i := 0; i < s.Cells; i++ {
+		for j := 0; j < s.Cells; j++ {
+			ax, ay := corner(i+1, j, s, xyscale, zscale)
+			bx, by := corner(i, j, s, xyscale, zscale)
+			cx, cy := corner(i, j+1, s, xyscale, zscale)
+			dx, dy := corner(i+1, j+1, s, xyscale, zscale)
+			fmt.Fprintf(out, "<polygon points='%g,%g %g,%g %g,%g %g,%g'/>\n",
+				ax, ay, bx, by, cx, cy, dx, dy)
 		}
 	}
-
-	s.End()
+	fmt.Fprintf(out, "</svg>")
 }
 
-func corner(i, j int, d *Surf) (float64, float64) {
-	var sin, cos = math.Sin(d.Angle), math.Cos(d.Angle)
+func corner(i, j int, s *Surf, xyscale, zscale float64) (float64, float64) {
+	// Find point (x,y) at corner of cell (i,j).
+	x := s.XYRange * (float64(i)/float64(s.Cells) - 0.5)
+	y := s.XYRange * (float64(j)/float64(s.Cells) - 0.5)
 
-	x := d.XYrange * (float64(i) / float64(d.Cells) - 0.5)
-	y := d.XYrange * (float64(j) / float64(d.Cells) - 0.5)
-
+	// Compute surface height z.
 	z := f(x, y)
 
-	sx := float64(d.Width/2) + (x*y)*cos*d.XYscale
-	sy := float64(d.Height/2) + (x+y)*sin*d.XYscale - z*d.Zscale
-
+	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
+	sx := float64(s.Width)/2 + (x-y)*cos30*xyscale
+	sy := float64(s.Height)/2 + (x+y)*sin30*xyscale - z*zscale
 	return sx, sy
 }
 
 func f(x, y float64) float64 {
-	r := math.Hypot(x, y)
-	return math.Sin(r)
+	r := math.Hypot(x, y) // distance from (0,0)
+	return math.Sin(r) / r
 }

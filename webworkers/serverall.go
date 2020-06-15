@@ -6,7 +6,6 @@ import (
 	"github.com/ythosa/gobih/surface"
 	"github.com/ythosa/gobih/types"
 	"log"
-	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -107,7 +106,7 @@ func lissajousHandler(w http.ResponseWriter, r *http.Request) {
 func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 	// Request example: http://localhost:8080/surface?width=300&height=500&cells=100&xyrange=30
 
-	w.Header().Set("ContentType", "image/svg+xml")
+	w.Header().Set("Content-Type", "image/svg+xml")
 
 	width, err := strconv.ParseInt(r.URL.Query().Get("width"), 10, 64)
 	if err != nil {
@@ -133,21 +132,14 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Invalid 'xyrange' property input")
 	}
 
-	xyscale := float64(width)/2/xyrange
-	zscale := float64(height) * 0.4
-	angle := math.Pi / 6
-
 	s := surface.Surf{
 		Width: int(width),
 		Height: int(height),
 		Cells: int(cells),
-		XYrange: xyrange,
-		XYscale: xyscale,
-		Zscale: zscale,
-		Angle: angle,
+		XYRange: xyrange,
 	}
 
-	surface.Draw(w, &s)
+	s.Draw(w)
 }
 
 func malbedroHandler(w http.ResponseWriter, r *http.Request) {
