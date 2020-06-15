@@ -119,6 +119,9 @@ func OpenTheBestShop() {
 	db := database{"shoes": 50, "socks": 30}
 	http.HandleFunc("/list", db.list)
 	http.HandleFunc("/price", db.price)
-	http.HandleFunc("setprice", db.setPrice)
-	log.Fatal(http.ListenAndServe("localhost:8081", nil)) // Using DefaultServeMux
+	http.HandleFunc("/setprice", db.setPrice)
+
+	// A global ServeMux instance named DefaultServeMux and the
+	// http.Handle and http package level functions http.HandleFunc
+	log.Fatal(http.ListenAndServe("localhost:8081", nil))
 }
