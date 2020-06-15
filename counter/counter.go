@@ -104,7 +104,7 @@ func (u unary) Check(vars map[Var]bool) error {
 }
 
 func (b binary) Check(vars map[Var]bool) error {
-	if strings.ContainsRune("+-*/", b.op) {
+	if !strings.ContainsRune("+-*/", b.op) {
 		return fmt.Errorf("invalid binary operator %q", b.op)
 	}
 
@@ -138,4 +138,34 @@ func (c call) Check(vars map[Var]bool) error {
 	}
 
 	return nil
+}
+
+func parseAndCheck(s string) (Expr, error) {
+	if s == "" {
+		return nil, fmt.Errorf("empty expression")
+	}
+	expr, err := Parse(s)
+	if err != nil {
+		return nil, err
+	}
+	vars := make(map[Var]bool)
+	if err := expr.Check(vars); err != nil {
+		return nil, err
+	}
+	for v := range vars {
+		if v != "x" && v != "y" && v != "r" {
+			return nil, fmt.Errorf("unknown variable: %s", v)
+		}
+	}
+	return expr, nil
+}
+
+
+func Count(s string, env Env) {
+	expr, err := parseAndCheck(s)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(expr.Eval(env))
 }
