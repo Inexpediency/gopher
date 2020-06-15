@@ -41,6 +41,7 @@ type call struct {
 // Env - an environment that maps variable names to values
 type Env map[Var]float64
 
+
 func (v Var) Eval(env Env) float64 {
 	return env[v]
 }
@@ -85,6 +86,7 @@ func (c call) Eval(env Env) float64 {
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
 
+
 func (v Var) Check(vars map[Var]bool) error {
 	vars[v] = true
 	return nil
@@ -111,4 +113,29 @@ func (b binary) Check(vars map[Var]bool) error {
 	}
 
 	return b.y.Check(vars)
+}
+
+var numParams = map[string]int{
+	"pow":  2,
+	"sin":  1,
+	"sqrt": 1,
+}
+
+func (c call) Check(vars map[Var]bool) error {
+	arity, ok := numParams[c.fn]
+	if !ok {
+		return fmt.Errorf("unknown function %q", c.fn)
+	}
+
+	if len(c.args) != arity {
+		return fmt.Errorf("call %s has %d instead of %d", c.fn, c.args, arity)
+	}
+
+	for _, arg := range c.args {
+		if err := arg.Check(vars); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
