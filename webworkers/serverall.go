@@ -71,30 +71,37 @@ func requestsCounter(w http.ResponseWriter, r *http.Request) {
 func lissajousHandler(w http.ResponseWriter, r *http.Request) {
 	// Request example: http://localhost:8080/lissajous?cycles=5&res=0.001&size=500&nframes=128&delay=5
 
-	var cycles, size, nframes, delay int
-	var res float64
-
-	url := strings.Split(r.URL.String()[11:], "&")
-	for _, v := range url {
-		prop := strings.Split(v, "=")[0]
-		value := strings.Split(v, "=")[1]
-
-		if prop == "cycles" {
-			cycles, _ = strconv.Atoi(value)
-		} else if prop == "res" {
-			res, _ = strconv.ParseFloat(value, 64)
-		} else if prop == "size" {
-			size, _ = strconv.Atoi(value)
-		} else if prop == "nframes" {
-			nframes, _ = strconv.Atoi(value)
-		} else if prop == "delay" {
-			delay, _ = strconv.Atoi(value)
-		}
+	cycles, err := strconv.ParseInt(r.URL.Query().Get("cycles"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'cycles' property input")
 	}
 
-	fmt.Printf("res: %f, cycles: %d, size: %d, nframes: %d, delay: %d\n", res, cycles, size, nframes, delay)
+	size, err := strconv.ParseInt(r.URL.Query().Get("size"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'size' property input")
+	}
 
-	lissajous.Draw(w, cycles, res, size, nframes, delay)
+	nframes, err := strconv.ParseInt(r.URL.Query().Get("nframes"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'nframes' property input")
+	}
+
+	delay, err := strconv.ParseInt(r.URL.Query().Get("delay"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'delay' property input")
+	}
+
+	res, err := strconv.ParseFloat(r.URL.Query().Get("res"), 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'res' property input")
+	}
+
+	lissajous.Draw(w, int(cycles), res, int(size), int(nframes), int(delay))
 }
 
 func surfaceHandler(w http.ResponseWriter, r *http.Request) {
@@ -102,35 +109,38 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("ContentType", "image/svg+xml")
 
-	var (
-		width, height, cells int
-		xyrange, xyscale, zscale, angle float64
-		)
-
-	url := strings.Split(r.URL.String()[9:], "&")
-	for _, v := range url {
-		prop := strings.Split(v, "=")[0]
-		value := strings.Split(v, "=")[1]
-
-		if prop == "width" {
-			width, _ = strconv.Atoi(value)
-		} else if prop == "height" {
-			height, _ = strconv.Atoi(value)
-		} else if prop == "cells" {
-			cells, _ = strconv.Atoi(value)
-		} else if prop == "xyrange" {
-			xyrange, _ = strconv.ParseFloat(value, 64)
-		}
+	width, err := strconv.ParseInt(r.URL.Query().Get("width"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'width' property input")
 	}
 
-	xyscale = float64(width)/2/xyrange
-	zscale = float64(height) * 0.4
-	angle = math.Pi / 6
+	height, err := strconv.ParseInt(r.URL.Query().Get("height"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'height' property input")
+	}
+
+	cells, err := strconv.ParseInt(r.URL.Query().Get("cells"), 10, 64)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'cells' property input")
+	}
+
+	xyrange, err := strconv.ParseFloat(r.URL.Query().Get("xyrange"), 10)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Invalid 'xyrange' property input")
+	}
+
+	xyscale := float64(width)/2/xyrange
+	zscale := float64(height) * 0.4
+	angle := math.Pi / 6
 
 	s := surface.Surf{
-		Width: width,
-		Height: height,
-		Cells: cells,
+		Width: int(width),
+		Height: int(height),
+		Cells: int(cells),
 		XYrange: xyrange,
 		XYscale: xyscale,
 		Zscale: zscale,
