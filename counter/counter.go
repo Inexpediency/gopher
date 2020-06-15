@@ -128,7 +128,7 @@ func (c call) Check(vars map[Var]bool) error {
 	}
 
 	if len(c.args) != arity {
-		return fmt.Errorf("call %s has %d instead of %d", c.fn, c.args, arity)
+		return fmt.Errorf("call %s has %d instead of %d", c.fn, len(c.args), arity)
 	}
 
 	for _, arg := range c.args {
