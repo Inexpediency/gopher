@@ -146,6 +146,7 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func plotHandler(w http.ResponseWriter, r *http.Request) {
+	// Request example: http://localhost:8080/plot?expr=sin(x*y/10)/10
 	r.ParseForm()
 	expr, err := counter.ParseAndCheck(r.Form.Get("expr"))
 	if err != nil {

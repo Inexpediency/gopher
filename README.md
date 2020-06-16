@@ -45,7 +45,8 @@
     * [number _1_ counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
 * [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
     * [_3D_ surface draftsman](https://github.com/Ythosa/gopher/tree/master/surface/surface.go)
-    * [output example](https://github.com/Ythosa/gopher/tree/master/surface/surfaceExample.png)
+    * [surface example](https://github.com/Ythosa/gopher/tree/master/surface/surfaceExample.png)
+    * [example of using as plot](https://github.com/Ythosa/gopher/tree/master/surface/plotExample.png)
 * [./types](https://github.com/Ythosa/gopher/tree/master/types)
     * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
     * [generator html document with table ofissues and some info about them from entered 
@@ -75,7 +76,9 @@
     * [parser & lexer](https://github.com/Ythosa/gopher/tree/master/counter/parse.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/counter/counter_test.go)
 * [./concurrency](https://github.com/Ythosa/gopher/tree/master/concurrency)
-    * ...
+    * [simple using concurrency examples](https://github.com/Ythosa/gopher/tree/master/concurrency/concurrency.go)
+    * [clock server](https://github.com/Ythosa/gopher/tree/master/concurrency/clockServer.go)
+    * [concurrency echo server](https://github.com/Ythosa/gopher/tree/master/concurrency/concEchoServer.go)
 
 <br>
 
