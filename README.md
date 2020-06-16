@@ -24,7 +24,7 @@
     * [simple echo with CLI](https://github.com/Ythosa/gopher/tree/master/echo/echoCLI.go)
 * [./duplicates](https://github.com/Ythosa/gopher/tree/master/duplicates)
     * [finder duplicated strings from stdin](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromFile.go)
-    * [finder duplicated strings from file](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromAll.go)
+    * [finder duplicated strings from file](https://github.com/Ythosa/gopher/tree/master/duplicates/duplStringsFromFileAll.go)
     * [finder duplicated strings from one more file](https://github.com/Ythosa/gopher/tree/master/)
 * [./links](https://github.com/Ythosa/gopher/tree/master/links)
     * [finder links on web page](https://github.com/Ythosa/gopher/tree/master/links/links.go)
@@ -33,14 +33,14 @@
     * [generator lissajous GIF images](https://github.com/Ythosa/gopher/tree/master/lissajous/lissajous.go)
     * <details><summary> <i> includes examples of generated images </i> <br> </summary> 
         <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #1 </a> <br>
-        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #2 </a> <br>
-        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example1.gif">example #3 </a>
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example2.gif">example #2 </a> <br>
+        <a href="https://github.com/Ythosa/gopher/tree/master/lissajous/example3.gif">example #3 </a>
       </details>
 * [./malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro)
     * [generator Malbedro and Newton Pools fractals](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.go)
     * _includes generated fractals_
         * [Malbedro](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.jpg)
-        * [Newton Pools](https://github.com/Ythosa/gopher/tree/master/malbedro/nutonpulls.jpg)
+        * [Newton Pools](https://github.com/Ythosa/gopher/tree/master/malbedro/nutonpulls.png)
 * [./popcount](https://github.com/Ythosa/gopher/tree/master/popcount)
     * [number _1_ counter in binary representation of a number](https://github.com/Ythosa/gopher/tree/master/popcount)
 * [./surface](https://github.com/Ythosa/gopher/tree/master/surface)
@@ -51,7 +51,7 @@
     * [topology sort example](https://github.com/Ythosa/gopher/tree/master/types/funcs.go)
     * [generator html document with table ofissues and some info about them from entered 
     repository name on github](https://github.com/Ythosa/gopher/tree/master/types)
-    * [using iota samples](https://github.com/Ythosa/gopher/tree/master/types/netflags.go)
+    * [using iota samples](https://github.com/Ythosa/gopher/tree/master/types/netflag.go)
     * [some functions that show operations with slices _in place_](https://github.com/Ythosa/gopher/tree/master/types/slices.go)
         * [output examples of them](https://github.com/Ythosa/gopher/tree/master/types/testslices.go)
 * [./webworkers](https://github.com/Ythosa/gopher/tree/master/webworkers)
