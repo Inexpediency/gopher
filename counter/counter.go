@@ -140,7 +140,7 @@ func (c call) Check(vars map[Var]bool) error {
 	return nil
 }
 
-func parseAndCheck(s string) (Expr, error) {
+func ParseAndCheck(s string) (Expr, error) {
 	if s == "" {
 		return nil, fmt.Errorf("empty expression")
 	}
@@ -162,7 +162,7 @@ func parseAndCheck(s string) (Expr, error) {
 
 
 func Count(s string, env Env) {
-	expr, err := parseAndCheck(s)
+	expr, err := ParseAndCheck(s)
 	if err != nil {
 		fmt.Println(err)
 	}

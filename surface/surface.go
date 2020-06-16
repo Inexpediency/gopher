@@ -14,7 +14,7 @@ type Surf struct {
 	XYRange float64   // axis ranges (-xyrange..+xyrange)
 }
 
-func (s *Surf) Draw(out io.Writer) {
+func (s *Surf) Draw(out io.Writer, f func(float64, float64) float64) {
 	fmt.Fprintf(out, "<svg xmlns='http://www.w3.org/2000/svg' "+
 		"style='stroke: grey; fill: white; stroke-width: 0.7' "+
 		"width='%d' height='%d'>", s.Width, s.Height)
@@ -24,10 +24,10 @@ func (s *Surf) Draw(out io.Writer) {
 
 	for i := 0; i < s.Cells; i++ {
 		for j := 0; j < s.Cells; j++ {
-			ax, ay := corner(i+1, j, s, xyscale, zscale)
-			bx, by := corner(i, j, s, xyscale, zscale)
-			cx, cy := corner(i, j+1, s, xyscale, zscale)
-			dx, dy := corner(i+1, j+1, s, xyscale, zscale)
+			ax, ay := corner(i+1, j, s, xyscale, zscale, f)
+			bx, by := corner(i, j, s, xyscale, zscale, f)
+			cx, cy := corner(i, j+1, s, xyscale, zscale, f)
+			dx, dy := corner(i+1, j+1, s, xyscale, zscale, f)
 			fmt.Fprintf(out, "<polygon points='%g,%g %g,%g %g,%g %g,%g'/>\n",
 				ax, ay, bx, by, cx, cy, dx, dy)
 		}
@@ -35,7 +35,7 @@ func (s *Surf) Draw(out io.Writer) {
 	fmt.Fprintf(out, "</svg>")
 }
 
-func corner(i, j int, s *Surf, xyscale, zscale float64) (float64, float64) {
+func corner(i, j int, s *Surf, xyscale, zscale float64, f func(float64, float64) float64) (float64, float64) {
 	// Find point (x,y) at corner of cell (i,j).
 	x := s.XYRange * (float64(i)/float64(s.Cells) - 0.5)
 	y := s.XYRange * (float64(j)/float64(s.Cells) - 0.5)
@@ -49,7 +49,7 @@ func corner(i, j int, s *Surf, xyscale, zscale float64) (float64, float64) {
 	return sx, sy
 }
 
-func f(x, y float64) float64 {
+func DefaultFunction(x, y float64) float64 {
 	r := math.Hypot(x, y) // distance from (0,0)
 	return math.Sin(r) / r
 }

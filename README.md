@@ -59,6 +59,7 @@
     * [simple echo server](https://github.com/Ythosa/gopher/tree/master/webworkers/server.go)
     * [server that includes more interesting functions from this 
     repository](https://github.com/Ythosa/gopher/tree/master/webworkers/serverall.go)
+    * [netcat utils _(use for testing TCP servers in `concurrency` folder)_](https://github.com/Ythosa/gopher/tree/master/webworkers/netcat.go)
 * [./methods](https://github.com/Ythosa/gopher/tree/master/methods)
     * [examples of using type methods in go](https://github.com/Ythosa/gopher/tree/master/methods/methods.go)
     * [bit vector realisation](https://github.com/Ythosa/gopher/tree/master/methods/bitvector.go)

@@ -2,10 +2,12 @@ package webworkers
 
 import (
 	"fmt"
+	"github.com/ythosa/gobih/counter"
 	"github.com/ythosa/gobih/malbedro"
 	"github.com/ythosa/gobih/surface"
 	"github.com/ythosa/gobih/types"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -25,6 +27,7 @@ func StartServerAll() {
 	http.HandleFunc("/count", requestsCounter)
 	http.HandleFunc("/lissajous", lissajousHandler)
 	http.HandleFunc("/surface", surfaceHandler)
+	http.HandleFunc("/plot", plotHandler)
 	http.HandleFunc("/malbedro", malbedroHandler)
 	http.HandleFunc("/nutonpic", nutonHandler)
 	http.HandleFunc("/githubIssues", githubIssuesHandler)
@@ -139,7 +142,30 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 		XYRange: xyrange,
 	}
 
-	s.Draw(w)
+	s.Draw(w, surface.DefaultFunction)
+}
+
+func plotHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	expr, err := counter.ParseAndCheck(r.Form.Get("expr"))
+	if err != nil {
+		http.Error(w, "bad expr: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	s := surface.Surf{
+		Width: 1200,
+		Height: 640,
+		Cells: 200,
+		XYRange: 60.0,
+	}
+
+	w.Header().Set("Content-Type", "image/svg+xml")
+
+	s.Draw(w, func(x, y float64) float64 {
+		r := math.Hypot(x, y) // distance from (0,0)
+		return expr.Eval(counter.Env{"x": x, "y": y, "r": r})
+	})
 }
 
 func malbedroHandler(w http.ResponseWriter, r *http.Request) {
