@@ -79,6 +79,7 @@
     * [simple using concurrency examples](https://github.com/Ythosa/gopher/tree/master/concurrency/concurrency.go)
     * [clock server](https://github.com/Ythosa/gopher/tree/master/concurrency/clockServer.go)
     * [concurrency echo server](https://github.com/Ythosa/gopher/tree/master/concurrency/concEchoServer.go)
+    * [channels](https://github.com/Ythosa/gopher/tree/master/concurrency/channels.go)
 
 <br>
 
