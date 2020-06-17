@@ -7,20 +7,20 @@ func SquaresPipeline() {
 	squares := make(chan int)
 
 	go func() {
-		for i := 0; ; i++ {
+		for i := 0; i < 100; i++ {
 			naturals <- i
 		}
+		close(naturals)
 	}()
 
 	go func() {
-		for {
-			x := <- naturals
+		for x := range naturals {
 			squares <- x * x
 		}
+		close(squares)
 	}()
 
-	for {
-		x := <- squares
+	for x := range squares {
 		fmt.Printf("%d  ", x)
 	}
 }
