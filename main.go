@@ -1,9 +1,7 @@
 package main
 
-import (
-	"github.com/ythosa/gobih/webworkers"
-)
+import "github.com/ythosa/gobih/concurrency"
 
 func main() {
-	webworkers.StartServerAll()
+	concurrency.SquaresPipeline()
 }
