@@ -2,7 +2,7 @@
 // a concurrent cake shop with numerous parameters.
 //
 // Use this command to run the benchmarks:
-// 	$ go test ./cake/
+// 	$ go test -bench=. github.com/ythosa/gobih/cake
 
 package cake
 
