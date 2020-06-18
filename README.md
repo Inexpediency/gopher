@@ -80,7 +80,10 @@
     * [clock server](https://github.com/Ythosa/gopher/tree/master/concurrency/clockServer.go)
     * [concurrency echo server](https://github.com/Ythosa/gopher/tree/master/concurrency/concEchoServer.go)
     * [channels](https://github.com/Ythosa/gopher/tree/master/concurrency/channels.go)
-
+* [./cake](https://github.com/Ythosa/gopher/tree/master/cake)
+    * [benchmark the use of the channels](https://github.com/Ythosa/gopher/tree/master/cake/cake.go)
+    * [tests](https://github.com/Ythosa/gopher/tree/master/cake/cake_test.go)
+    
 <br>
 
 ## FAQ

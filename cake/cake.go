@@ -1,3 +1,9 @@
+// Package cake provides a simulation of
+// a concurrent cake shop with numerous parameters.
+//
+// Use this command to run the benchmarks:
+// 	$ go test ./cake/
+
 package cake
 
 import (
