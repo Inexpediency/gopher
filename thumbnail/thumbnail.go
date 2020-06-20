@@ -9,8 +9,8 @@
 //
 // Run with:
 //   $ go run $GOPATH/src/gopl.io/ch8/thumbnail/main.go
-//   foo.jpeg
-//   ^D
+//   $ foo.jpeg
+//   $ ^D
 //
 
 package thumbnail
