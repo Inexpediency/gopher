@@ -47,6 +47,7 @@ func Extract(url string) ([]string, error) {
 	return links, nil
 }
 
+
 func TestForEachNode() {
 	f, err := os.Open("./links/templatehtmlprint.html")
 	if err != nil {
@@ -79,12 +80,14 @@ func ForEachNode(n *html.Node, pre, post func(n *html.Node)) {
 
 
 var depth = 0
+
 func StartElement(n *html.Node) {
 	if n.Type == html.ElementNode {
 		fmt.Printf("%*s<%s>\n", depth*4, "", n.Data)
 		depth++
 	}
 }
+
 func EndElement(n *html.Node) {
 	if n.Type == html.ElementNode {
 		depth--
