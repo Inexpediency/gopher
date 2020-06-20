@@ -1,5 +1,3 @@
-// +build ignore
-
 // The thumbnail command produces thumbnails of JPEG files
 // whose names are provided on each line of the standard input.
 //
@@ -17,7 +15,6 @@ package thumbnail
 import (
 	"bufio"
 	"fmt"
-	"gopl.io/ch8/thumbnail"
 	"log"
 	"os"
 )
@@ -25,7 +22,7 @@ import (
 func Run() {
 	input := bufio.NewScanner(os.Stdin)
 	for input.Scan() {
-		thumb, err := thumbnail.ImageFile(input.Text())
+		thumb, err := ImageFile(input.Text())
 		if err != nil {
 			log.Print(err)
 			continue

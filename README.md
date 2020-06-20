@@ -87,6 +87,7 @@
     * [thumbnails maker](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnail.go)
     * [library of the thumbnails maker](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnaillib.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnail_test.go)
+    * [example of program work on the Malbedro fractals from `malbedro` package](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.thumb.jpg)
     
 <br>
 

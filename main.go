@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/links"
+import "github.com/ythosa/gobih/thumbnail"
 
 func main() {
-	links.RunAsync()
+	thumbnail.Run()
 }
