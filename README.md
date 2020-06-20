@@ -83,6 +83,10 @@
 * [./cake](https://github.com/Ythosa/gopher/tree/master/cake)
     * [benchmark the use of the channels](https://github.com/Ythosa/gopher/tree/master/cake/cake.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/cake/cake_test.go)
+* [./thumbnail](https://github.com/Ythosa/gopher/tree/master/thumbnail)
+    * [thumbnails maker](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnail.go)
+    * [library of the thumbnails maker](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnaillib.go)
+    * [tests](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnail_test.go)
     
 <br>
 
