@@ -8,9 +8,11 @@
 // this:
 //
 // Run with:
-//   $ go run $GOPATH/src/gopl.io/ch8/thumbnail/main.go
-//   $ foo.jpeg
-//   $ ^D
+//   - Start `Run()` from main.go
+//   - Run program:
+//   	$ make run
+//   	$ foo.jpeg
+//   	$ ^D
 //
 
 package thumbnail
