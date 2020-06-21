@@ -1,9 +1,7 @@
 package main
 
-import (
-	"github.com/ythosa/gobih/webworkers"
-)
+import "github.com/ythosa/gobih/thumbnail"
 
 func main() {
-	webworkers.StartServerAll()
+	thumbnail.Run()
 }
