@@ -12,6 +12,7 @@ import (
 		webworkers.NetCat()
 */
 
+// HandleConnClockServer starts clock server
 func HandleConnClockServer(c net.Conn) {
 	defer c.Close()
 	for {

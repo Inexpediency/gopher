@@ -22,10 +22,11 @@ func echo(c net.Conn, shout string, delay time.Duration) {
 	fmt.Fprintln(c, "\t", strings.ToLower(shout))
 }
 
+// HandleConnEchoServer starts echо server
 func HandleConnEchoServer(c net.Conn) {
 	defer c.Close()
 	input := bufio.NewScanner(c)
 	for input.Scan() {
-		go echo(c, input.Text(), 1 * time.Second)
+		go echo(c, input.Text(), 1*time.Second)
 	}
 }

@@ -2,6 +2,7 @@ package concurrency
 
 import "fmt"
 
+// SquaresPipeline starts squares pipline
 func SquaresPipeline() {
 	naturals := make(chan int)
 	squares := make(chan int)
@@ -14,18 +15,18 @@ func SquaresPipeline() {
 
 	go func() {
 		for {
-			x := <- naturals
+			x := <-naturals
 			squares <- x * x
 		}
 	}()
 
 	for {
-		x := <- squares
+		x := <-squares
 		fmt.Printf("%d  ", x)
 	}
 }
 
-
+// SquaresPipelineWithClosinChannels starts squares pipeline with closing channels
 func SquaresPipelineWithClosinChannels() {
 	naturals := make(chan int)
 	squares := make(chan int)
@@ -52,7 +53,6 @@ func SquaresPipelineWithClosinChannels() {
 	}
 }
 
-
 func counter(out chan<- int) {
 	for x := 0; x < 100; x++ {
 		out <- x
@@ -60,7 +60,7 @@ func counter(out chan<- int) {
 	close(out)
 }
 
-func squarer(out chan<-int, in <-chan int) {
+func squarer(out chan<- int, in <-chan int) {
 	for x := range in {
 		out <- x * x
 	}
@@ -73,6 +73,7 @@ func printer(in <-chan int) {
 	}
 }
 
+// SquaresPipelineUnidirectional starts squares pipeline using unidirectional channels
 func SquaresPipelineUnidirectional() {
 	naturals := make(chan int)
 	squares := make(chan int)

@@ -34,19 +34,18 @@ type binary struct {
 
 // call represents a function call expression, such as sin(x)
 type call struct {
-	fn string // one of `pow`, `sin`, `sqrt`
+	fn   string // one of `pow`, `sin`, `sqrt`
 	args []Expr
 }
 
 // Env - an environment that maps variable names to values
 type Env map[Var]float64
 
-
 func (v Var) Eval(env Env) float64 {
 	return env[v]
 }
 
-func (l literal) Eval (_ Env) float64 {
+func (l literal) Eval(_ Env) float64 {
 	return float64(l)
 }
 
@@ -85,7 +84,6 @@ func (c call) Eval(env Env) float64 {
 	}
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
-
 
 func (v Var) Check(vars map[Var]bool) error {
 	vars[v] = true
@@ -159,7 +157,6 @@ func ParseAndCheck(s string) (Expr, error) {
 	}
 	return expr, nil
 }
-
 
 func Count(s string, env Env) {
 	expr, err := ParseAndCheck(s)

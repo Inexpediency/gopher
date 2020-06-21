@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+// Countdown starts countdown
 func Countdown() {
 	abort := make(chan struct{})
 	go func() {
@@ -27,6 +28,9 @@ func Countdown() {
 		select {
 		case <-tick:
 			// Do nothing
+		case <-abort:
+			// Abort countdown
+			break
 		}
 	}
 
