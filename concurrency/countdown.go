@@ -15,6 +15,7 @@ import (
 func Countdown() {
 	abort := make(chan struct{})
 	go func() {
+		// Abort with pressing <Enter>
 		os.Stdin.Read(make([]byte, 1))
 		abort <- struct{}{}
 	}()
@@ -30,7 +31,7 @@ func Countdown() {
 			// Do nothing
 		case <-abort:
 			// Abort countdown
-			break
+			return
 		}
 	}
 

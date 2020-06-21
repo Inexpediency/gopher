@@ -41,7 +41,6 @@ func precedence(op rune) int {
 	return 0
 }
 
-
 // ---- Parser ----
 
 // Parse parses the input string as an arithmetic expression.

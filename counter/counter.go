@@ -41,14 +41,17 @@ type call struct {
 // Env - an environment that maps variable names to values
 type Env map[Var]float64
 
+// Eval variable
 func (v Var) Eval(env Env) float64 {
 	return env[v]
 }
 
+// Eval literal
 func (l literal) Eval(_ Env) float64 {
 	return float64(l)
 }
 
+// Eval unary
 func (u unary) Eval(env Env) float64 {
 	switch u.op {
 	case '+':
@@ -59,6 +62,7 @@ func (u unary) Eval(env Env) float64 {
 	panic(fmt.Sprintf("unsupported unary operator: %q", u.op))
 }
 
+// Eval binary
 func (b binary) Eval(env Env) float64 {
 	switch b.op {
 	case '+':
@@ -73,6 +77,7 @@ func (b binary) Eval(env Env) float64 {
 	panic(fmt.Sprintf("unsupported binary operator: %q", b.op))
 }
 
+// Eval functions
 func (c call) Eval(env Env) float64 {
 	switch c.fn {
 	case "pow":
@@ -85,15 +90,18 @@ func (c call) Eval(env Env) float64 {
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
 
+// Check variables
 func (v Var) Check(vars map[Var]bool) error {
 	vars[v] = true
 	return nil
 }
 
+// Check literals
 func (literal) Check(vars map[Var]bool) error {
 	return nil
 }
 
+// Check unary
 func (u unary) Check(vars map[Var]bool) error {
 	if !strings.ContainsRune("+-", u.op) {
 		return fmt.Errorf("invalid unary operator %q", u.op)
@@ -101,6 +109,7 @@ func (u unary) Check(vars map[Var]bool) error {
 	return u.x.Check(vars)
 }
 
+// Check binary
 func (b binary) Check(vars map[Var]bool) error {
 	if !strings.ContainsRune("+-*/", b.op) {
 		return fmt.Errorf("invalid binary operator %q", b.op)
@@ -119,6 +128,7 @@ var numParams = map[string]int{
 	"sqrt": 1,
 }
 
+// Check functions call
 func (c call) Check(vars map[Var]bool) error {
 	arity, ok := numParams[c.fn]
 	if !ok {
@@ -138,6 +148,7 @@ func (c call) Check(vars map[Var]bool) error {
 	return nil
 }
 
+// ParseAndCheck expression
 func ParseAndCheck(s string) (Expr, error) {
 	if s == "" {
 		return nil, fmt.Errorf("empty expression")
@@ -158,6 +169,7 @@ func ParseAndCheck(s string) (Expr, error) {
 	return expr, nil
 }
 
+// Count expression
 func Count(s string, env Env) {
 	expr, err := ParseAndCheck(s)
 	if err != nil {

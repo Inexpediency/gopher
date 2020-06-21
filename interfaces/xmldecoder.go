@@ -9,7 +9,7 @@ import (
 )
 
 /* XML decoding based on tokens
-	package xml code fragment   */
+package xml code fragment   */
 /*
 	type Name struct {
 		Local string // For ex: `Title` or `id`
@@ -32,6 +32,7 @@ import (
 	func (*Decoder) Token() (Token, error) // Return token
 */
 
+// DecodeXML decodes XML
 func DecodeXML() {
 	// Build example: curl  http://www.w3.org/TR/2006/RECxmlll20060816 | main div div h2
 	dec := xml.NewDecoder(os.Stdin)
@@ -50,7 +51,7 @@ func DecodeXML() {
 		case xml.StartElement:
 			stack = append(stack, t.Name.Local) // Push to stack
 		case xml.EndElement:
-			stack = stack[:len(stack) - 1] // Remove from stack
+			stack = stack[:len(stack)-1] // Remove from stack
 		case xml.CharData:
 			if containsAll(stack, os.Args[1:]) {
 				fmt.Printf("%s: %s\n", strings.Join(stack, " "), tok)

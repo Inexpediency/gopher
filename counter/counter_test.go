@@ -2,9 +2,10 @@ package counter_test
 
 import (
 	"fmt"
-	"github.com/ythosa/gobih/counter"
 	"math"
 	"testing"
+
+	"github.com/ythosa/gobih/counter"
 )
 
 //!+Eval

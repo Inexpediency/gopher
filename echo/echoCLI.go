@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	n = flag.Bool("n", false, "Pass new string symbol")
+	n   = flag.Bool("n", false, "Pass new string symbol")
 	sep = flag.String("s", " ", "Separator")
 )
 

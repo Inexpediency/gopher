@@ -2,9 +2,10 @@ package links
 
 import (
 	"fmt"
-	"golang.org/x/net/html"
 	"net/http"
 	"os"
+
+	"golang.org/x/net/html"
 )
 
 // Extract sends GET HTTP request to the URL, completes
@@ -26,7 +27,7 @@ func Extract(url string) ([]string, error) {
 	}
 
 	var links []string
-	visitNode := func (n *html.Node) {
+	visitNode := func(n *html.Node) {
 		if n.Type == html.ElementNode && n.Data == "a" {
 			for _, a := range n.Attr {
 				if a.Key != "href" {
@@ -47,7 +48,7 @@ func Extract(url string) ([]string, error) {
 	return links, nil
 }
 
-
+// TestForEachNode ...
 func TestForEachNode() {
 	f, err := os.Open("./links/templatehtmlprint.html")
 	if err != nil {
@@ -65,7 +66,7 @@ func TestForEachNode() {
 	ForEachNode(h, StartElement, EndElement)
 }
 
-
+// ForEachNode ...
 func ForEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
 		pre(n)
@@ -78,9 +79,9 @@ func ForEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	}
 }
 
-
 var depth = 0
 
+// StartElement handler
 func StartElement(n *html.Node) {
 	if n.Type == html.ElementNode {
 		fmt.Printf("%*s<%s>\n", depth*4, "", n.Data)
@@ -88,6 +89,7 @@ func StartElement(n *html.Node) {
 	}
 }
 
+// EndElement handler
 func EndElement(n *html.Node) {
 	if n.Type == html.ElementNode {
 		depth--

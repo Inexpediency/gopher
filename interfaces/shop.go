@@ -23,8 +23,9 @@ func (d dollars) String() string {
 
 type database map[string]dollars
 
-
 /* Shop 1.0 */
+
+// OpenShop starts shop server
 func OpenShop() {
 	db := database{"shoes": 50, "socks": 30}
 	log.Fatal(http.ListenAndServe("localhost:8081", db))
@@ -67,8 +68,9 @@ func (db database) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-
 /* Shop 2.0 */
+
+// OpenBetterShop starts better shop server
 func OpenBetterShop() {
 	db := database{"shoes": 50, "socks": 30}
 	mux := http.NewServeMux()
@@ -113,8 +115,9 @@ func (db database) setPrice(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-
 /* Shop 3.0 */
+
+// OpenTheBestShop starts the best shop server realisation
 func OpenTheBestShop() {
 	db := database{"shoes": 50, "socks": 30}
 	http.HandleFunc("/list", db.list)

@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Track type
 type Track struct {
 	Title  string
 	Artist string
@@ -34,8 +35,8 @@ func length(s string) time.Duration {
 func printTracks(tracks []*Track) {
 	const format = "%v\t%v\t%v\t%v\t%v\t\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
-	fmt.Fprintf(tw, format, "Title","Artist","Album","Year","Length")
-	fmt.Fprintf (tw, format, "---- ","------","-----","----","----- ")
+	fmt.Fprintf(tw, format, "Title", "Artist", "Album", "Year", "Length")
+	fmt.Fprintf(tw, format, "---- ", "------", "-----", "----", "----- ")
 	for _, t := range tracks {
 		fmt.Fprintf(tw, format, t.Title, t.Artist,
 			t.Album, t.Year, t.Length)
@@ -44,14 +45,15 @@ func printTracks(tracks []*Track) {
 }
 
 type customSort struct {
-	t []*Track
+	t    []*Track
 	less func(x, y *Track) bool
 }
 
-func (x customSort) Len() int { return len(x.t) }
-func (x customSort) Less(i,j int) bool { return x.less(x.t[i],x.t[j]) }
-func (x customSort) Swap(i,j int) { x.t[i], x.t[j] = x.t[j], x.t[i] }
+func (x customSort) Len() int           { return len(x.t) }
+func (x customSort) Less(i, j int) bool { return x.less(x.t[i], x.t[j]) }
+func (x customSort) Swap(i, j int)      { x.t[i], x.t[j] = x.t[j], x.t[i] }
 
+// SortTasks function
 func SortTasks(t string, rev bool) error {
 	if t == "all" {
 		sort.Sort(customSort{tracks, func(x, y *Track) bool {

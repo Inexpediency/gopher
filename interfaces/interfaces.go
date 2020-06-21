@@ -9,35 +9,39 @@ import (
 	"time"
 )
 
+// ByteCounter type
 type ByteCounter int
-func (c *ByteCounter) Write (p []byte) (int, error) {
+
+func (c *ByteCounter) Write(p []byte) (int, error) {
 	*c += ByteCounter(len(p))
 	return len(p), nil
 }
 
-
 // *bytes.Buffer must match io.Writer
 var _ io.Writer = (*bytes.Buffer)(nil)
 
-
+// Artifact type
 type Artifact interface {
 	Title() string
 	Creators() []string
 	Created() time.Time
 }
 
+// Text type
 type Text interface {
 	Pages() int
 	Words() int
 	PageSize() int
 }
 
+// Audio type
 type Audio interface {
 	Stream() (io.ReadCloser, error)
 	RunningTime() time.Duration
 	Format() string // For example, "MP3", "WAV"
 }
 
+// Video type
 type Video interface {
 	Stream() (io.ReadCloser, error)
 	RunningTime() time.Duration
@@ -45,14 +49,14 @@ type Video interface {
 	Resolution() (x, у int)
 }
 
+// Streamer type
 type Streamer interface {
 	Stream() (io.ReadCloser, error)
 	RunningTime() time.Duration
 	Format() string
 }
 
-
-
+// Waiter CLI application
 func Waiter() {
 	// build example:  main --period 10s
 	var period = flag.Duration("period", 1*time.Second, "sleep period")
@@ -62,8 +66,6 @@ func Waiter() {
 	fmt.Println()
 }
 
-
-
 //package sort
 //type Interface interface {
 //	Len() int
@@ -71,6 +73,7 @@ func Waiter() {
 //Swap(i, j int)
 //}
 
+// StringSlice type
 type StringSlice []string
 
 func (p StringSlice) Len() int {
@@ -85,6 +88,7 @@ func (p StringSlice) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
 }
 
+// TestSort represents sort example
 func TestSort() {
 	s := StringSlice{"name1", "name3", "name2"}
 	fmt.Println("Input: ", s)
@@ -93,11 +97,10 @@ func TestSort() {
 	fmt.Println("Result: ", s)
 }
 
-
 /* Using type declaration example */
 func highloadWriteHeader(w io.Writer, contentType string) error {
 	/* The most highload server part xd */
-	if _, err := writeString(w,"Content-Type: "); err != nil {
+	if _, err := writeString(w, "Content-Type: "); err != nil {
 		return err
 	}
 	if _, err := writeString(w, contentType); err != nil {
@@ -116,9 +119,8 @@ func writeString(w io.Writer, s string) (n int, err error) {
 	if sw, ok := w.(stringWriter); ok {
 		return sw.WriteString(s) // Avoid copy string
 	}
-	return w.Write([]byte(s))    // Using temporary copy
+	return w.Write([]byte(s)) // Using temporary copy
 }
-
 
 // Type definition with switch example
 func sqlQuote(x interface{}) string {

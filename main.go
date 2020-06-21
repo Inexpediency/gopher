@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ythosa/gobih/thumbnail"
+import "github.com/ythosa/gobih/concurrency"
 
 func main() {
-	thumbnail.Run()
+	concurrency.Countdown()
 }
