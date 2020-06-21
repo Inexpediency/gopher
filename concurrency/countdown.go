@@ -1,3 +1,8 @@
+// Countdown implements the countdown for a rocket launch.
+
+// NOTE: the ticker goroutine never terminates if the launch is aborted.
+// This is a "goroutine leak".
+
 package concurrency
 
 import (
