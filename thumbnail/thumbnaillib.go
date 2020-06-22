@@ -3,13 +3,13 @@
 package thumbnail
 
 import (
-"fmt"
-"image"
-"image/jpeg"
-"io"
-"os"
-"path/filepath"
-"strings"
+	"fmt"
+	"image"
+	"image/jpeg"
+	"io"
+	"os"
+	"path/filepath"
+	"strings"
 )
 
 // Image returns a thumbnail-size version of src.

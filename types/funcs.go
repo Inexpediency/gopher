@@ -2,14 +2,15 @@ package types
 
 import (
 	"fmt"
-	"github.com/ythosa/gobih/links"
-	"golang.org/x/net/html"
 	"log"
 	"net/http"
 	"os"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/ythosa/gobih/links"
+	"golang.org/x/net/html"
 )
 
 func Squares() func() int {
@@ -19,7 +20,6 @@ func Squares() func() int {
 		return x * x
 	}
 }
-
 
 func TestSquares() {
 	f := Squares()
@@ -31,25 +31,23 @@ func TestSquares() {
 	fmt.Println(f())
 }
 
-
 func TestTopologySort() {
 	var prereqs = map[string][]string{
-		"algorithms": {"data structures"},
-		"calculus": {"linear algebra"},
-		"compilers" : {"data structures", "formal languages", "computer organization"},
-		"data structures" : {"discrete math"},
-		"databases": {"data structures"},
-		"discrete math": {"intro to programming"},
-		"formal languages": {"discrete math"},
-		"networks": {"operating systems"},
+		"algorithms":            {"data structures"},
+		"calculus":              {"linear algebra"},
+		"compilers":             {"data structures", "formal languages", "computer organization"},
+		"data structures":       {"discrete math"},
+		"databases":             {"data structures"},
+		"discrete math":         {"intro to programming"},
+		"formal languages":      {"discrete math"},
+		"networks":              {"operating systems"},
 		"programming languages": {"data structures", "computer organization"},
 	}
 
 	for i, course := range TopologySort(prereqs) {
-		fmt.Printf("%d:\t%s\n", i + 1, course)
+		fmt.Printf("%d:\t%s\n", i+1, course)
 	}
 }
-
 
 func TopologySort(m map[string][]string) []string {
 	var order []string

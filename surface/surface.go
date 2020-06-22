@@ -9,9 +9,9 @@ import (
 var sin30, cos30 = math.Sin(math.Pi / 6), math.Cos(math.Pi / 6) // sin(30°), cos(30°)
 
 type Surf struct {
-	Width, Height int // canvas size in pixels
-	Cells int         // number of grid cells
-	XYRange float64   // axis ranges (-xyrange..+xyrange)
+	Width, Height int     // canvas size in pixels
+	Cells         int     // number of grid cells
+	XYRange       float64 // axis ranges (-xyrange..+xyrange)
 }
 
 func (s *Surf) Draw(out io.Writer, f func(float64, float64) float64) {

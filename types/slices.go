@@ -1,7 +1,7 @@
 package types
 
 func Reverse(s []int) {
-	for i, j := 0, len(s) - 1; i < j; i, j = i+1, j-1 {
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}
 }
@@ -28,7 +28,7 @@ func AppendInt(x []int, y ...int) []int {
 		// There is no room for growth. Selecting a new array.
 		// Double it for linear amortized complexity,
 		zcap := zlen
-		if zcap	< 2 * len(x) {
+		if zcap < 2*len(x) {
 			zcap = 2 * len(x)
 		}
 		z = make([]int, zlen, zcap)

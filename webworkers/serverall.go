@@ -2,16 +2,17 @@ package webworkers
 
 import (
 	"fmt"
-	"github.com/ythosa/gobih/counter"
-	"github.com/ythosa/gobih/malbedro"
-	"github.com/ythosa/gobih/surface"
-	"github.com/ythosa/gobih/types"
 	"log"
 	"math"
 	"net/http"
 	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/ythosa/gobih/counter"
+	"github.com/ythosa/gobih/malbedro"
+	"github.com/ythosa/gobih/surface"
+	"github.com/ythosa/gobih/types"
 
 	"github.com/ythosa/gobih/lissajous"
 )
@@ -136,9 +137,9 @@ func surfaceHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	s := surface.Surf{
-		Width: int(width),
-		Height: int(height),
-		Cells: int(cells),
+		Width:   int(width),
+		Height:  int(height),
+		Cells:   int(cells),
 		XYRange: xyrange,
 	}
 
@@ -155,9 +156,9 @@ func plotHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	s := surface.Surf{
-		Width: 1200,
-		Height: 640,
-		Cells: 200,
+		Width:   1200,
+		Height:  640,
+		Cells:   200,
 		XYRange: 60.0,
 	}
 

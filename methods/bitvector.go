@@ -10,13 +10,13 @@ type IntSet struct {
 }
 
 // Has specifies whether the set contains a non-negative value of X.
-func (s *IntSet) Has (x int) bool {
+func (s *IntSet) Has(x int) bool {
 	word, bit := x/64, uint(x%64)
 	return word < len(s.words) && s.words[word]&(1<<bit) != 0
 }
 
 // Add adds a non negative value x to the set
-func (s *IntSet) Add (x int) {
+func (s *IntSet) Add(x int) {
 	word, bit := x/64, uint(x%64)
 	for word >= len(s.words) {
 		s.words = append(s.words, 0)
@@ -25,7 +25,7 @@ func (s *IntSet) Add (x int) {
 }
 
 // UnionWith makes the set s equal to the Union of sets s and t
-func (s *IntSet) UnionWith (t *IntSet) {
+func (s *IntSet) UnionWith(t *IntSet) {
 	for i, tword := range t.words {
 		if i < len(s.words) {
 			s.words[i] |= tword
@@ -43,7 +43,7 @@ func (s *IntSet) String() string {
 		if word == 0 {
 			continue
 		}
-		for j := 0; j < 64 ; j++ {
+		for j := 0; j < 64; j++ {
 			if word&(1<<uint(j)) != 0 {
 				if buf.Len() > len("{") {
 					buf.WriteByte(' ')

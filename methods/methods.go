@@ -6,26 +6,27 @@ import (
 	"sync"
 )
 
-
 var cache = struct {
 	sync.Mutex
 	mapping map[string]string
-} {
+}{
 	mapping: make(map[string]string),
 }
+
 func Lookup(key string) string {
-	cache. Lock()
+	cache.Lock()
 	v := cache.mapping[key]
-	cache. Unlock()
+	cache.Unlock()
 	return v
 }
 
-
 type Point struct{ X, Y float64 }
+
 // Traditional function
 func Distance(p, q Point) float64 {
 	return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
+
 // The same, but as Point method
 func (p *Point) Distance(q Point) float64 {
 	return math.Hypot(q.X-p.X, q.Y-p.Y)
@@ -36,8 +37,8 @@ func (p *Point) ScaleBy(factor float64) {
 	p.Y *= factor
 }
 
-
 type Path []Point
+
 // Distance returns path length
 func (path Path) Distance() float64 {
 	sum := 0.0
@@ -49,14 +50,13 @@ func (path Path) Distance() float64 {
 	return sum
 }
 
-
 type ColoredPoint struct {
 	Point
 	Color color.RGBA
 }
 
-func (p Point) Add(q Point) Point { return Point{p.X+q.X, p.Y+q.Y} }
-func (p Point) Sub(q Point) Point { return Point{p.X-q.X, p.Y-q.Y} }
+func (p Point) Add(q Point) Point { return Point{p.X + q.X, p.Y + q.Y} }
+func (p Point) Sub(q Point) Point { return Point{p.X - q.X, p.Y - q.Y} }
 
 func (path Path) TranslateBy(offset Point, add bool) {
 	var op func(p, q Point) Point

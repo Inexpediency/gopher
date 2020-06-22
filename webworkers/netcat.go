@@ -32,7 +32,7 @@ func NetCat4EchoServer() {
 	}()
 
 	mustCopy(conn, os.Stdin)
-	<- done // waiting end of the background goroutine
+	<-done // waiting end of the background goroutine
 }
 
 func mustCopy(dst io.Writer, src io.Reader) {
