@@ -3,6 +3,7 @@ package du
 import (
 	"flag"
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -18,20 +19,25 @@ func Du() {
 		roots = []string{"."}
 	}
 
-	// Crawling the file tree
-	fileSizes := make(chan int64)
-	go func() {
-		for _, root := range roots {
-			walkDir(root, fileSizes)
-		}
-		close(fileSizes)
-	}()
-
 	// Periodic output of results
 	var tick <-chan	time.Time
 	if *verbose {
 		tick = time.Tick(500 * time.Millisecond)
 	}
+
+	// Crawling the file tree
+	fileSizes := make(chan int64)
+	var n sync.WaitGroup
+	for _, root := range roots {
+		n.Add(1)
+		go walkDir(root, &n, fileSizes)
+	}
+
+	// Waiting all goroutines
+	go func() {
+		n.Wait()
+		close(fileSizes)
+	}()
 
 	// Counting results
 	var nfiles, nbytes int64
@@ -40,7 +46,7 @@ func Du() {
 		select {
 			case size, ok := <-fileSizes:
 				if !ok {
-					counting = false
+					counting = false // fileSizes is closed
 				}
 				nfiles++
 				nbytes += size

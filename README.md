@@ -91,7 +91,7 @@
     * [example of program work on the Malbedro fractals from `malbedro` package](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.thumb.jpg)
 * [./du](https://github.com/Ythosa/gopher/tree/master/du)    
     * [du is the CLI with features like `du` Unix command](https://github.com/Ythosa/gopher/tree/master/du/du.go)
-    * [directory walker](https://github.com/Ythosa/gopher/tree/master/walker.go))
+    * [directory walker](https://github.com/Ythosa/gopher/tree/master/walker.go)
         
 <br>
 
@@ -99,6 +99,7 @@
 *Q*: How can I help to develop this project?  
 *A*: You can put a :star: :3
 
+<br>
 
 <div align="center">
   Copyright 2020 Ythosa
