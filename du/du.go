@@ -3,11 +3,14 @@ package du
 import (
 	"flag"
 	"fmt"
+	"os"
 	"sync"
 	"time"
 )
 
 var verbose = flag.Bool("v", false, "output of intermediate results")
+
+var done = make(chan struct{})
 
 // Du reports the amount of disk space used by one or more directories
 // as a `du` Unix command
@@ -18,6 +21,12 @@ func Du() {
 	if len(roots) == 0 {
 		roots = []string{"."}
 	}
+
+	// Canceling a crawl when an input is detected
+	go func() {
+		os.Stdin.Read(make([]byte, 1)) // Reading 1 byte
+		close(done)
+	}()
 
 	// Periodic output of results
 	var tick <-chan	time.Time
@@ -44,15 +53,22 @@ func Du() {
 	counting := true
 	for counting {
 		select {
-			case size, ok := <-fileSizes:
-				if !ok {
-					counting = false // fileSizes is closed
-				}
-				nfiles++
-				nbytes += size
+		case <-done:
+			// emptying the channel to allow all goroutines to end
+			for range fileSizes {
+				// Do nothing
+			}
+			return
 
-			case <-tick:
-				printDiskUsage(nfiles, nbytes)
+		case size, ok := <-fileSizes:
+			if !ok {
+				counting = false // fileSizes is closed
+			}
+			nfiles++
+			nbytes += size
+
+		case <-tick:
+			printDiskUsage(nfiles, nbytes)
 		}
 	}
 

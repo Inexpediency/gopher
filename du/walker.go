@@ -11,6 +11,9 @@ import (
 // walkDir recursively traverses the file tree with the root in dir and sends the size of each found file to file Sizes.
 func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
 	defer n.Done()
+	if cancelled() {
+		return
+	}
 
 	for _, entry := range dirents(dir) {
 		if entry.IsDir() {
@@ -28,8 +31,11 @@ var sema = make(chan struct{}, 20)
 
 // dirents returns directory entries dir
 func dirents(dir string) []os.FileInfo {
-	// the capture of the marker
-	sema <- struct{}{}
+	select {
+	case sema <-struct{}{}: // the capture of the marker
+	case <-done: // cancel
+		return nil
+	}
 
 	// the release of the marker
 	defer func(){ <-sema }()
@@ -41,4 +47,14 @@ func dirents(dir string) []os.FileInfo {
 	}
 
 	return entries
+}
+
+// cancelled returns true if counting was cancelled
+func cancelled() bool {
+	select {
+	case <-done:
+		return true
+	default:
+		return false
+	}
 }
