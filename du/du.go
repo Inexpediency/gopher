@@ -73,6 +73,7 @@ func Du() {
 	}
 
 	// Printing results
+	fmt.Print("Total: ")
 	printDiskUsage(nfiles, nbytes)
 }
 

@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/du"
+	"github.com/ythosa/gobih/chat"
+	"github.com/ythosa/gobih/webworkers"
 )
 
 func main() {
-	du.Du()
+	go chat.Start()
+	webworkers.NetCat4EchoServer()
 }
