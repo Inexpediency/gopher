@@ -102,7 +102,7 @@ func TemplateHTMLPrint(out io.Writer, result *IssueSearchResult) {
 	var issueList = template.Must(template.New("issuelist").Parse(
 		`<h1>Total: {{.TotalCount}} issues</h1>
 <table>
-	<tr style=’text-align: left’>
+	<tr style='text-align: left'>
 		<th>#</th>
 		<th>State</th>
 		<th>User</th>
