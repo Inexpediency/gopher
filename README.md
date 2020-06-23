@@ -89,7 +89,10 @@
     * [library of the thumbnails maker](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnaillib.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/thumbnail/thumbnail_test.go)
     * [example of program work on the Malbedro fractals from `malbedro` package](https://github.com/Ythosa/gopher/tree/master/malbedro/malbedro.thumb.jpg)
-    
+* [./du](https://github.com/Ythosa/gopher/tree/master/du)    
+    * [du is the CLI with features like `du` Unix command](https://github.com/Ythosa/gopher/tree/master/du/du.go)
+    * [directory walker](https://github.com/Ythosa/gopher/tree/master/walker.go))
+        
 <br>
 
 ## FAQ

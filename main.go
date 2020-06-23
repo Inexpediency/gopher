@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/concurrency"
+import (
+	"github.com/ythosa/gobih/du"
+)
 
 func main() {
-	concurrency.Countdown()
+	du.Du()
 }
