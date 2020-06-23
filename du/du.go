@@ -3,7 +3,10 @@ package du
 import (
 	"flag"
 	"fmt"
+	"time"
 )
+
+var verbose = flag.Bool("v", false, "output of intermediate results")
 
 // Du reports the amount of disk space used by one or more directories
 // as a `du` Unix command
@@ -24,11 +27,27 @@ func Du() {
 		close(fileSizes)
 	}()
 
+	// Periodic output of results
+	var tick <-chan	time.Time
+	if *verbose {
+		tick = time.Tick(500 * time.Millisecond)
+	}
+
 	// Counting results
 	var nfiles, nbytes int64
-	for size := range fileSizes {
-		nfiles++
-		nbytes += size
+	counting := true
+	for counting {
+		select {
+			case size, ok := <-fileSizes:
+				if !ok {
+					counting = false
+				}
+				nfiles++
+				nbytes += size
+
+			case <-tick:
+				printDiskUsage(nfiles, nbytes)
+		}
 	}
 
 	// Printing results
