@@ -1,17 +1,19 @@
-// bank provides a parallel secure Bank with a single account
+// package bank provides a parallel secure Bank with a single account
 
-package concurrency
+// realisation with 2 channels
+
+package bank
 
 var deposits = make(chan int) // The administration of the contribution
 var balances = make(chan int) // Getting a balance
 
-// Deposit increases balance on amount
-func Deposit(amount int) {
+// DepositV1 increases balance on amount
+func DepositV1(amount int) {
 	deposits <- amount
 }
 
-// Balance returns current balance
-func Balance() int {
+// BalanceV1 returns current balance
+func BalanceV1() int {
 	return <-balances
 }
 
