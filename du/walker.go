@@ -32,13 +32,13 @@ var sema = make(chan struct{}, 20)
 // dirents returns directory entries dir
 func dirents(dir string) []os.FileInfo {
 	select {
-	case sema <-struct{}{}: // the capture of the marker
+	case sema <- struct{}{}: // the capture of the marker
 	case <-done: // cancel
 		return nil
 	}
 
 	// the release of the marker
-	defer func(){ <-sema }()
+	defer func() { <-sema }()
 
 	// getting dir items
 	entries, err := ioutil.ReadDir(dir)

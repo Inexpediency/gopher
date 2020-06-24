@@ -29,7 +29,7 @@ func Du() {
 	}()
 
 	// Periodic output of results
-	var tick <-chan	time.Time
+	var tick <-chan time.Time
 	if *verbose {
 		tick = time.Tick(500 * time.Millisecond)
 	}
@@ -78,5 +78,5 @@ func Du() {
 }
 
 func printDiskUsage(nfiles, nbytes int64) {
-	fmt.Printf("%d files %.5f GB\n", nfiles, float64(nbytes) / 1e9)
+	fmt.Printf("%d files %.5f GB\n", nfiles, float64(nbytes)/1e9)
 }
