@@ -81,6 +81,7 @@
     * [concurrency echo server](https://github.com/Ythosa/gopher/tree/master/concurrency/concEchoServer.go)
     * [countdown for a rocket launch](https://github.com/Ythosa/gopher/tree/master/concurrency/countdown.go)
     * [channels](https://github.com/Ythosa/gopher/tree/master/concurrency/channels.go)
+    * [parallel secure Bank with a single account](https://github.com/Ythosa/gopher/tree/master/concurrency/bank.go)
 * [./cake](https://github.com/Ythosa/gopher/tree/master/cake)
     * [benchmark the use of the channels](https://github.com/Ythosa/gopher/tree/master/cake/cake.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/cake/cake_test.go)
