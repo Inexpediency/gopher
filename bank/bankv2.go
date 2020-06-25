@@ -1,6 +1,6 @@
 // pacakge bank provides a parallel secure Bank with a single account
 
-// realisation with semaphore
+// realisation with binary semaphore
 
 package bank
 

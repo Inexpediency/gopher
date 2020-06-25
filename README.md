@@ -95,10 +95,10 @@
 * [./chat](https://github.com/Ythosa/gopher/tree/master/chat)    
     * [simple chat server realisation](https://github.com/Ythosa/gopher/tree/master/chat/chat.go)  
 * [./bank](https://github.com/Ythosa/gopher/tree/master/bank)      
-    * _parallel secure Bank with a single account_
-    * [realisation with channels](https://github.com/Ythosa/gopher/tree/master/bank/bankv1.go)
-    * [realisation with semaphore](https://github.com/Ythosa/gopher/tree/master/bank/bankv2.go)
-    * [realisation with sync.Mutex](https://github.com/Ythosa/gopher/tree/master/bank/bankv3.go)
+    * _parallel secure Bank with a single account realisations:_
+    * [with channels](https://github.com/Ythosa/gopher/tree/master/bank/bankv1.go)
+    * [with binary semaphore](https://github.com/Ythosa/gopher/tree/master/bank/bankv2.go)
+    * [with sync.Mutex](https://github.com/Ythosa/gopher/tree/master/bank/bankv3.go)
             
 <br>
 

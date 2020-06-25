@@ -28,6 +28,7 @@ func teller() {
 	}
 }
 
-func init() {
-	go teller() // Starting the control goroutine
-}
+// NOTE: this should be commented out when using `bankv1`
+// func init() {
+// 	go teller() // Starting the control goroutine
+// }
