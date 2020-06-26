@@ -2,16 +2,21 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/ythosa/gobih/bank"
 )
 
 func main() {
-	bank.DepositV3(1014012)
-	bank.WithdrawV3(100)
-	bank.BalanceV3()
-	bank.DepositV3(100)
-	bank.WithdrawV3(100)
+	go bank.Monitor(os.Stdout)
 
-	fmt.Println(bank.BalanceV3())
+	for i := 0; i < 1000000; i++ {
+		bank.DepositV3(1014012)
+		bank.WithdrawV3(100)
+		bank.BalanceV3()
+		bank.DepositV3(100)
+		bank.WithdrawV3(100)
+	}
+
+	fmt.Println("Balance:", bank.BalanceV3())
 }
