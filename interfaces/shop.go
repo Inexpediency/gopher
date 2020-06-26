@@ -58,9 +58,9 @@ func (db database) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		lastPrice, ok := db[item]
 		db[item] = dollars(price)
 		if ok {
-			fmt.Fprintf(w, "Price of %s was changed from %s to %s\n", item, lastPrice, price)
+			fmt.Fprintf(w, "Price of %s was changed from %s to %s\n", item, lastPrice, db[item])
 		} else {
-			fmt.Fprintf(w, "Added new item: %s with cost = %s", item, price)
+			fmt.Fprintf(w, "Added new item: %s with cost = %s", item, db[item])
 		}
 	default:
 		w.WriteHeader(http.StatusNotFound) // 404

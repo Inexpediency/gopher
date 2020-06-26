@@ -6,9 +6,9 @@ build:
 run:
 	go run ./main.go
 
-# .PHONY: test
-# test:
-# 	go test -v -race -timeout 30s ./internal/app/...
+.PHONY: test
+test:
+	go test -timeout 30s ./...
 
 .PHONY: israce
 race:
