@@ -9,3 +9,7 @@ run:
 # .PHONY: test
 # test:
 # 	go test -v -race -timeout 30s ./internal/app/...
+
+.PHONY: israce
+race:
+	go run ./main.go -race

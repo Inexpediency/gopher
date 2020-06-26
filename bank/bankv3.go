@@ -46,6 +46,7 @@ func deposit(amount int) {
 	balance += amount
 }
 
+// Monitor is monitoring bill balance
 func Monitor(out io.Writer) int {
 	tick := time.Tick(20 * time.Millisecond)
 
