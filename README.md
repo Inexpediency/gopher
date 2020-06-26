@@ -99,7 +99,10 @@
     * [with channels](https://github.com/Ythosa/gopher/tree/master/bank/bankv1.go)
     * [with binary semaphore](https://github.com/Ythosa/gopher/tree/master/bank/bankv2.go)
     * [with sync.Mutex](https://github.com/Ythosa/gopher/tree/master/bank/bankv3.go)
-            
+* [./memo](https://github.com/Ythosa/gopher/tree/master/memo)         
+    * [parallel non-blocking cache of functions](https://github.com/Ythosa/gopher/tree/master/memo/memo.go)
+    * [tests](https://github.com/Ythosa/gopher/tree/master/memo_test.go)
+
 <br>
 
 ## FAQ
