@@ -15,12 +15,14 @@ import (
 	"github.com/ythosa/gobih/memo"
 )
 
+// go test -v -timeout 30s github.com/ythosa/gobih/memo -run ^(Test)$
 func Test(t *testing.T) {
 	m := memo.New(httpGetBody)
 	defer m.Close()
 	Sequential(t, m)
 }
 
+// go test -v -timeout 30s github.com/ythosa/gobih/memo -run ^(TestConcurrent)$
 func TestConcurrent(t *testing.T) {
 	m := memo.New(httpGetBody)
 	defer m.Close()
@@ -63,8 +65,6 @@ type M interface {
 	Get(key string) (interface{}, error)
 }
 
-// m := memo.New(httpGetBody)
-
 func Sequential(t *testing.T, m M) {
 	for url := range incomingURLs() {
 		start := time.Now()
@@ -77,8 +77,6 @@ func Sequential(t *testing.T, m M) {
 			url, time.Since(start), len(value.([]byte)))
 	}
 }
-
-// m := memo.New(httpGetBody)
 
 func Concurrent(t *testing.T, m M) {
 	var n sync.WaitGroup
