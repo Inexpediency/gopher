@@ -101,7 +101,7 @@
     * [with sync.Mutex](https://github.com/Ythosa/gopher/tree/master/bank/bankv3.go)
 * [./memo](https://github.com/Ythosa/gopher/tree/master/memo)         
     * [parallel non-blocking cache of functions](https://github.com/Ythosa/gopher/tree/master/memo/memo.go)
-    * [tests](https://github.com/Ythosa/gopher/tree/master/memo_test.go)
+    * [tests](https://github.com/Ythosa/gopher/tree/master/memo/memo_test.go)
 
 <br>
 
