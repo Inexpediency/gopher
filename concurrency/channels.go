@@ -2,7 +2,7 @@ package concurrency
 
 import "fmt"
 
-// SquaresPipeline starts squares pipline
+// SquaresPipeline starts squares pipeline
 func SquaresPipeline() {
 	naturals := make(chan int)
 	squares := make(chan int)
@@ -26,8 +26,8 @@ func SquaresPipeline() {
 	}
 }
 
-// SquaresPipelineWithClosinChannels starts squares pipeline with closing channels
-func SquaresPipelineWithClosinChannels() {
+// SquaresPipelineWithClosingChannels starts squares pipeline with closing channels
+func SquaresPipelineWithClosingChannels() {
 	naturals := make(chan int)
 	squares := make(chan int)
 
