@@ -11,7 +11,7 @@ import (
 // Extract sends GET HTTP request to the URL, completes
 // syntax analise and returns all links in HTML document
 func Extract(url string) ([]string, error) {
-	resp, err := http.Get(url)
+	resp, err := http.Get(url) //nolint:gosec
 	if err != nil {
 		return nil, err
 	}
