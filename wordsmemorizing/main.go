@@ -46,7 +46,7 @@ func parseWords(inputFilePath string) words {
 	return parsed
 }
 
-func memorize(w words) words {
+func memorize(w words, verbose bool) words {
 	wrong := make(words)
 
 	reader := bufio.NewReader(os.Stdin)
@@ -55,6 +55,10 @@ func memorize(w words) words {
 		wr, _ := reader.ReadString('\n')
 		wr = strings.TrimSpace(wr)
 		if wr != a.right {
+			if verbose {
+				fmt.Printf("Must be: %s\n", a.right)
+			}
+
 			wrong[ru] = attempt{
 				right:  a.right,
 				writed: wr,
@@ -83,9 +87,10 @@ func printResults(w words) {
 func main() {
 	var inputFile = flag.String("i", "./input/words.yaml", "input file path")
 	var errorCorrection = flag.Bool("ec", true, "Enable error correction")
+	var verbose = flag.Bool("v", true, "Verbose errors")
 
 	words := parseWords(*inputFile)
-	words = memorize(words)
+	words = memorize(words, *verbose)
 	printResults(words)
 
 	if !*errorCorrection {
@@ -93,7 +98,7 @@ func main() {
 	}
 
 	for len(words) != 0 {
-		words = memorize(words)
+		words = memorize(words, *verbose)
 		printResults(words)
 	}
 }
