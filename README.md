@@ -102,6 +102,8 @@
 * [./memo](https://github.com/Ythosa/gopher/tree/master/memo)         
     * [parallel non-blocking cache of functions](https://github.com/Ythosa/gopher/tree/master/memo/memo.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/memo/memo_test.go)
+* [./sudoku](https://github.com/Ythosa/gopher/tree/master/sudoku)
+    * [validation sudoku matrix](https://github.com/Ythosa/gopher/tree/master/sudoku/sudoku.go)
 
 <br>
 
