@@ -1,11 +1,7 @@
 package main
 
-import (
-	"os"
-
-	"github.com/ythosa/gobih/unix"
-)
+import "github.com/ythosa/gobih/concurrency"
 
 func main() {
-	unix.TraceSysCalls(os.Args)
+	concurrency.Converter(0, 10)
 }
