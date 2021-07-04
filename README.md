@@ -106,6 +106,8 @@
 * [./lexemcounter](./lexemcounter)
     * [Go keywords counter in passed files](./lexemcounter/lexemcounter.go)
     * [variables and them length counter](./lexemcounter/varlencounter.go)
+* [./reflection]
+    * [some examples of using reflection](./reflection/reflection.go)
 
 <br>
 

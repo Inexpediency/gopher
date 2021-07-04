@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/lexemcounter"
+import (
+	"github.com/ythosa/gobih/reflection"
+)
 
 func main() {
-	lexemcounter.CountVariablesOfLen([]string{"./sudoku/sudoku.go", "./lexemcounter/varlencounter.go"})
+	reflection.ReflectTest()
 }

@@ -103,11 +103,11 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 		v.isItLocal(d.Value)
 	case *ast.FuncDecl:
 		if d.Recv != nil {
-			v.CheckAll(d.Recv.List)
+			v.checkAll(d.Recv.List)
 		}
-		v.CheckAll(d.Type.Params.List)
+		v.checkAll(d.Type.Params.List)
 		if d.Type.Results != nil {
-			v.CheckAll(d.Type.Results.List)
+			v.checkAll(d.Type.Results.List)
 		}
 	case *ast.GenDecl:
 		if d.Tok != token.VAR {
@@ -148,7 +148,7 @@ func (v visitor) isItLocal(n ast.Node) {
 	}
 }
 
-func (v visitor) CheckAll(fs []*ast.Field) {
+func (v visitor) checkAll(fs []*ast.Field) {
 	for _, f := range fs {
 		for _, name := range f.Names {
 			v.isItLocal(name)
