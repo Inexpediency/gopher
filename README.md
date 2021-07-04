@@ -108,6 +108,8 @@
     * [variables and them length counter](./lexemcounter/varlencounter.go)
 * [./reflection]
     * [some examples of using reflection](./reflection/reflection.go)
+* [./unix]
+    * [syscalls tracer (syscall names and their count)](./unix/syscallstracer.go)
 
 <br>
 

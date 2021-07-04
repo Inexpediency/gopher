@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/ythosa/gobih/reflection"
+	"os"
+
+	"github.com/ythosa/gobih/unix"
 )
 
 func main() {
-	reflection.ReflectTest()
+	unix.TraceSysCalls(os.Args)
 }
