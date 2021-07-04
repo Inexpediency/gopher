@@ -104,6 +104,8 @@
     * [tests](https://github.com/Ythosa/gopher/tree/master/memo/memo_test.go)
 * [./sudoku](https://github.com/Ythosa/gopher/tree/master/sudoku)
     * [validation sudoku matrix](https://github.com/Ythosa/gopher/tree/master/sudoku/sudoku.go)
+* [./lexemcounter](./lexemcounter)
+    * [Go keywords counter in passed files](./lexemcounter/lexemcounter.go)
 
 <br>
 
