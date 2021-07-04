@@ -7,24 +7,6 @@ import (
 	"io/ioutil"
 )
 
-func isKeyword(kw string) bool {
-	var keywords = []string{
-		"break", "default", "func", "interface", "select",
-		"case", "defer", "go", "map", "struct",
-		"chan", "else", "goto", "package", "switch",
-		"const", "fallthrough", "if", "range", "type",
-		"continue", "for", "import", "return", "var",
-	}
-
-	for _, v := range keywords {
-		if kw == v {
-			return true
-		}
-	}
-
-	return false
-}
-
 func printCount(c map[string]int) {
 	for k, v := range c {
 		fmt.Printf("\tlexem: %s\t\tcount: %d\n", k, v)
@@ -53,7 +35,7 @@ func CountLexem(files []string) {
 			if tok == token.EOF {
 				break
 			}
-			if isKeyword(lit) {
+			if token.IsKeyword(lit) {
 				localCount[lit] += 1
 				count[lit] += 1
 			}

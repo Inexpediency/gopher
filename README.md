@@ -71,7 +71,6 @@
     * [playlist sorting ang printing with _tabwriter_](https://github.com/Ythosa/gopher/tree/master/interfaces/tracks.go)
     * [HTML tag sequence search engine](https://github.com/Ythosa/gopher/tree/master/interfaces/xmldecoder.go)
 * [./counter](https://github.com/Ythosa/gopher/tree/master/counter)
-    * _expressions counter_
     * [expressions checker, eval methods for them](https://github.com/Ythosa/gopher/tree/master/counter/counter.go)
     * [parser & lexer](https://github.com/Ythosa/gopher/tree/master/counter/parse.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/counter/counter_test.go)
@@ -106,6 +105,7 @@
     * [validation sudoku matrix](https://github.com/Ythosa/gopher/tree/master/sudoku/sudoku.go)
 * [./lexemcounter](./lexemcounter)
     * [Go keywords counter in passed files](./lexemcounter/lexemcounter.go)
+    * [variables and them length counter](./lexemcounter/varlencounter.go)
 
 <br>
 
