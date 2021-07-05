@@ -81,6 +81,7 @@
     * [countdown for a rocket launch](https://github.com/Ythosa/gopher/tree/master/concurrency/countdown.go)
     * [channels](https://github.com/Ythosa/gopher/tree/master/concurrency/channels.go)
     * [converter](https://github.com/Ythosa/gopher/tree/master/concurrency/converter.go)
+    * [thread (goroutines) pool example](https://github.com/Ythosa/gopher/tree/master/concurrency/threadpool.go)
 * [./cake](https://github.com/Ythosa/gopher/tree/master/cake)
     * [benchmark the use of the channels](https://github.com/Ythosa/gopher/tree/master/cake/cake.go)
     * [tests](https://github.com/Ythosa/gopher/tree/master/cake/cake_test.go)
@@ -107,9 +108,9 @@
 * [./lexemcounter](./lexemcounter)
     * [Go keywords counter in passed files](./lexemcounter/lexemcounter.go)
     * [variables and them length counter](./lexemcounter/varlencounter.go)
-* [./reflection]
+* [./reflection](./reflection)
     * [some examples of using reflection](./reflection/reflection.go)
-* [./unix]
+* [./unix](./unix)
     * [syscalls tracer (syscall names and their count)](./unix/syscallstracer.go)
 
 <br>
