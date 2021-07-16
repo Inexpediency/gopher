@@ -237,7 +237,7 @@ func insertElement(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func StartKeyValueStorageServer() {
+func StartKeyValueStorageServer(port string) {
 	storage = NewStorage("/tmp/kvdata.gob")
 	err := storage.load()
 	if err != nil {
@@ -248,8 +248,9 @@ func StartKeyValueStorageServer() {
 	http.HandleFunc("/change", changeElement)
 	http.HandleFunc("/list", listAll)
 	http.HandleFunc("/insert", insertElement)
-	err = http.ListenAndServe(":8080", nil)
+
+	err = http.ListenAndServe(port, nil)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 }
