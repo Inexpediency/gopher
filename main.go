@@ -1,7 +1,9 @@
 package main
 
-import "github.com/ythosa/gobih/concurrency"
+import (
+	"github.com/ythosa/gobih/web"
+)
 
 func main() {
-	concurrency.RunThreadPool(10000, 500)
+	web.StartKeyValueStorageServer()
 }

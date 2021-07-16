@@ -112,6 +112,11 @@
     * [some examples of using reflection](./reflection/reflection.go)
 * [./unix](./unix)
     * [syscalls tracer (syscall names and their count)](./unix/syscallstracer.go)
+* [./web](./web)
+    * [key value storage service with webview](./web/kv.go)
+      * [home page template](./web/home.gohtml)
+      * [insert page template](./web/insert.gohtml)
+      * [update page template](./web/update.gohtml)
 
 <br>
 
