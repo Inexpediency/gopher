@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	web.StartKeyValueStorageServer()
+	web.StartKeyValueStorageServer(":8080", "/tmp/kvdata.gob")
 }
